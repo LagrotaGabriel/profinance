@@ -1,13 +1,13 @@
-package br.com.profinance;
+package br.com.transaction;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProfinanceApplication {
+public class TransactionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProfinanceApplication.class, args);
+		SpringApplication.run(TransactionApplication.class, args);
 	}
 
 }
