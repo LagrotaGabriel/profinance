@@ -12,7 +12,7 @@
 
 	<artifactId>transaction</artifactId>
 	<version>${parent.version}</version>
-	<name>paciente</name>
+	<name>transaction</name>
 	<description>ProFinance Transaction module</description>
 
 	<properties>
