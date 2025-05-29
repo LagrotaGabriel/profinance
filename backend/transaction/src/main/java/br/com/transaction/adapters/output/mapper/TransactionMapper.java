@@ -22,7 +22,7 @@ public class TransactionMapper {
         entity.setExpirationDate(transaction.getExpirationDate());
         entity.setExecutionDate(transaction.getExecutionDate());
         entity.setStatus(transaction.getStatus());
-        entity.setCategory(transaction.getCategory());
+        entity.setCategory(TransactionCategoryMapper.toEntity(transaction.getCategory()));
         return entity;
     }
 
@@ -38,7 +38,7 @@ public class TransactionMapper {
                 entity.getExpirationDate(),
                 entity.getExecutionDate(),
                 entity.getStatus(),
-                entity.getCategory()
+                TransactionCategoryMapper.toDomain(entity.getCategory())
         );
     }
 }

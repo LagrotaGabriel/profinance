@@ -1,6 +1,5 @@
 package br.com.transaction.adapters.output.entity;
 
-import br.com.transaction.domain.model.TransactionCategory;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
@@ -52,7 +51,7 @@ public class TransactionEntity {
     @Column(name = "enm_status_trn", nullable = false)
     private TransactionStatusEnum status;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cod_category_trn", nullable = false)
-    private TransactionCategory category;
+    private TransactionCategoryEntity category;
 }
