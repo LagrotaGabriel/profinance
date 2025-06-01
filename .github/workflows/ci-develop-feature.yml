@@ -50,7 +50,7 @@ jobs:
       packages: write
 
     env:
-      COMPONENT: myapp
+      COMPONENT: profinance
       CONTEXT: backend
       ENV: dev
       VERSION: ${{ github.sha }}
