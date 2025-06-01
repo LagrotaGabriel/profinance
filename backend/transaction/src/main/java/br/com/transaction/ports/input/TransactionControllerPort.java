@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Tag(name = "Transaction management")
-@RequestMapping("/api/v1/profinance/transaction")
+@RequestMapping("/profinance/api/v1/transaction")
 public interface TransactionControllerPort {
 
     // TODO ADD API ERROR RESPONSES
