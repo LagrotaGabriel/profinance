@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @LogExecution
-public class TransactionService {
+public class CreateTransactionService {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
     private final CategoryRepositoryPort categoryRepositoryPort;
 
-    public TransactionService(TransactionRepositoryPort transactionRepositoryPort,
-                              CategoryRepositoryPort categoryRepositoryPort) {
+    public CreateTransactionService(TransactionRepositoryPort transactionRepositoryPort,
+                                    CategoryRepositoryPort categoryRepositoryPort) {
 
         this.transactionRepositoryPort = transactionRepositoryPort;
         this.categoryRepositoryPort = categoryRepositoryPort;
