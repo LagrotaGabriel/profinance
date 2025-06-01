@@ -20,7 +20,7 @@ public class TransactionCategoryEntity {
 
     @Id
     @Comment("Primary key of the transaction category - UUID")
-    @Column(name = "cod_transaction_trc", nullable = false, updatable = false)
+    @Column(name = "cod_category_trc", nullable = false, updatable = false)
     private UUID id;
 
     @CreationTimestamp
