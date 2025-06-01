@@ -38,6 +38,7 @@
 	</properties>
 
 	<modules>
+		<module>main</module>
 		<module>transaction</module>
 	</modules>
 
@@ -50,4 +51,16 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>br.com.main.MainApplication</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
