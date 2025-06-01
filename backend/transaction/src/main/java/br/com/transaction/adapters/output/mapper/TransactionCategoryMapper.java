@@ -28,9 +28,6 @@ public class TransactionCategoryMapper {
             return null;
         }
 
-        return new TransactionCategory(
-                entity.getName(),
-                entity.getType()
-        );
+        return new TransactionCategory(entity);
     }
 }

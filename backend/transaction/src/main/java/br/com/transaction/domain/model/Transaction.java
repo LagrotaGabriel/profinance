@@ -1,5 +1,6 @@
 package br.com.transaction.domain.model;
 
+import br.com.transaction.adapters.output.entity.TransactionEntity;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import lombok.Getter;
 
@@ -21,6 +22,19 @@ public class Transaction {
     private TransactionCategory category;
 
     public Transaction() {
+    }
+
+    public Transaction(TransactionEntity transactionEntity,
+                       TransactionCategory transactionCategory) {
+
+        this.id = transactionEntity.getId();
+        this.creationTimeStamp = transactionEntity.getCreationTimeStamp();
+        this.description = transactionEntity.getDescription();
+        this.value = transactionEntity.getValue();
+        this.expirationDate = transactionEntity.getExpirationDate();
+        this.executionDate = transactionEntity.getExecutionDate();
+        this.status = transactionEntity.getStatus();
+        this.category = transactionCategory;
     }
 
     public Transaction(String description,

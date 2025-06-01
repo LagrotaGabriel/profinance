@@ -1,5 +1,6 @@
 package br.com.transaction.domain.model;
 
+import br.com.transaction.adapters.output.entity.TransactionCategoryEntity;
 import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import lombok.Getter;
 
@@ -15,6 +16,14 @@ public class TransactionCategory {
     private TransactionCategoryTypeEnum type;
 
     public TransactionCategory() {
+    }
+
+    public TransactionCategory(TransactionCategoryEntity transactionCategoryEntity) {
+
+        this.id = transactionCategoryEntity.getId();
+        this.creationTimeStamp = transactionCategoryEntity.getCreationTimeStamp();
+        this.name = transactionCategoryEntity.getName();
+        this.type = transactionCategoryEntity.getType();
     }
 
     public TransactionCategory(String name,

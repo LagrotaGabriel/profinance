@@ -33,11 +33,7 @@ public class TransactionMapper {
         }
 
         return new Transaction(
-                entity.getDescription(),
-                entity.getValue(),
-                entity.getExpirationDate(),
-                entity.getExecutionDate(),
-                entity.getStatus(),
+                entity,
                 TransactionCategoryMapper.toDomain(entity.getCategory())
         );
     }
