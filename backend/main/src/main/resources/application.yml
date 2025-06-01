@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Transaction-Module
+    name: Profinance
 
   # Database connection
   datasource:
