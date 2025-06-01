@@ -1,6 +1,7 @@
 package br.com.transaction.domain.service;
 
 import br.com.transaction.adapters.input.dto.CreateTransactionRequest;
+import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.domain.model.TransactionCategory;
 import br.com.transaction.ports.output.category.CategoryRepositoryPort;
@@ -8,6 +9,7 @@ import br.com.transaction.ports.output.transaction.TransactionRepositoryPort;
 import org.springframework.stereotype.Service;
 
 @Service
+@LogExecution
 public class TransactionService {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
