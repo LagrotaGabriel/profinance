@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>transaction</artifactId>
+	<packaging>jar</packaging>
 	<version>${parent.version}</version>
 	<name>transaction</name>
 	<description>ProFinance Transaction module</description>
