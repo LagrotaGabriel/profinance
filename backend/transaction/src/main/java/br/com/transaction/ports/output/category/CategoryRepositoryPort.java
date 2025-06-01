@@ -6,5 +6,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CategoryRepositoryPort {
+    void save(TransactionCategory transactionCategory);
     TransactionCategory findById(UUID id);
 }

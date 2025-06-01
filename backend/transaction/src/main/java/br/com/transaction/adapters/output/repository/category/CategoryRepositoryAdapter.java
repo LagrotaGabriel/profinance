@@ -19,6 +19,12 @@ public class CategoryRepositoryAdapter implements CategoryRepositoryPort {
     }
 
     @Override
+    public void save(TransactionCategory transactionCategory) {
+        TransactionCategoryEntity categoryEntity = TransactionCategoryMapper.toEntity(transactionCategory);
+        categoryJpaRepository.save(categoryEntity);
+    }
+
+    @Override
     public TransactionCategory findById(UUID id) {
 
         Optional<TransactionCategoryEntity> categoryEntityOptional = categoryJpaRepository.findById(id);
