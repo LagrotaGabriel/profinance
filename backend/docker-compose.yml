@@ -3,11 +3,12 @@ version: "3.8"
 services:
 
   # Microsserviços
-  profinance-service:
-    container_name: profinance-srv
-    image: gabriellagrota/profinance-service:latest
+  profinance:
+    container_name: profinance
+    image: gabriellagrota/profinance:latest
     restart: always
-    build: .
+    build:
+      context: .
     environment:
       TZ: America/Sao_Paulo
       DB_URL: ${DB_URL}
