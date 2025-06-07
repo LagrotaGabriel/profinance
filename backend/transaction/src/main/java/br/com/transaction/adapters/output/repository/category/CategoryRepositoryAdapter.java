@@ -3,7 +3,10 @@ package br.com.transaction.adapters.output.repository.category;
 import br.com.transaction.adapters.output.entity.TransactionCategoryEntity;
 import br.com.transaction.adapters.output.mapper.TransactionCategoryMapper;
 import br.com.transaction.domain.model.TransactionCategory;
+import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.ports.output.category.CategoryRepositoryPort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -36,5 +39,30 @@ public class CategoryRepositoryAdapter implements CategoryRepositoryPort {
 
         TransactionCategoryEntity categoryEntity = categoryEntityOptional.get();
         return TransactionCategoryMapper.toDomain(categoryEntity);
+    }
+
+    @Override
+    public Boolean existsByNameAndType(String name,
+                                       TransactionCategoryTypeEnum type) {
+
+        return categoryJpaRepository.existsByNameAndType(
+                name,
+                type
+        );
+    }
+
+    @Override
+    public Page<TransactionCategory> findPageableCategory(Pageable pageable,
+                                                          String name,
+                                                          TransactionCategoryTypeEnum type) {
+
+        Page<TransactionCategoryEntity> categoryEntityPage =
+                categoryJpaRepository.findPageableCategory(
+                        pageable,
+                        name,
+                        type
+                );
+
+        return TransactionCategoryMapper.toDomainPage(categoryEntityPage);
     }
 }
