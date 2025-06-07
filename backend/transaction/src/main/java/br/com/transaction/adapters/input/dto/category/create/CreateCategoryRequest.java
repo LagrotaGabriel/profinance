@@ -1,4 +1,4 @@
-package br.com.transaction.adapters.input.dto;
+package br.com.transaction.adapters.input.dto.category.create;
 
 import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 

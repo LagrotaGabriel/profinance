@@ -1,4 +1,4 @@
-package br.com.transaction.adapters.input.dto;
+package br.com.transaction.adapters.input.dto.transaction.create;
 
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 
