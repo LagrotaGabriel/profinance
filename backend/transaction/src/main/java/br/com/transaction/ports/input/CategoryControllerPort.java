@@ -15,6 +15,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Tag(name = "Transaction category management")
 @RequestMapping("/profinance/api/v1/category")
 public interface CategoryControllerPort {
@@ -41,5 +43,15 @@ public interface CategoryControllerPort {
             @PageableDefault(size = 20) Pageable pageable,
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "type", required = false) TransactionCategoryTypeEnum type
+    );
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Finds category by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Category found successfully",
+                    content = {@Content(mediaType = "application/json")}),
+    })
+    ResponseEntity<CategoryResponse> findCategoryById(
+            @PathVariable(value = "id") UUID id
     );
 }
