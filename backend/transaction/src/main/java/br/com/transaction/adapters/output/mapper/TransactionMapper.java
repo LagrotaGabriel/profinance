@@ -2,6 +2,7 @@ package br.com.transaction.adapters.output.mapper;
 
 import br.com.transaction.adapters.output.entity.TransactionEntity;
 import br.com.transaction.domain.model.Transaction;
+import org.springframework.data.domain.Page;
 
 public class TransactionMapper {
 
@@ -28,13 +29,18 @@ public class TransactionMapper {
 
     public static Transaction toDomain(TransactionEntity entity) {
 
-        if (entity == null) {
-            return null;
-        }
+        if (entity == null) return null;
 
         return new Transaction(
                 entity,
                 TransactionCategoryMapper.toDomain(entity.getCategory())
         );
+    }
+
+    public static Page<Transaction> toDomainPage(Page<TransactionEntity> transactionEntityPage) {
+
+        if (transactionEntityPage == null) return null;
+
+        return transactionEntityPage.map(TransactionMapper::toDomain);
     }
 }
