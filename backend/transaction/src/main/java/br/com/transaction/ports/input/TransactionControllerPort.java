@@ -1,6 +1,6 @@
 package br.com.transaction.ports.input;
 
-import br.com.transaction.adapters.input.dto.CreateTransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
