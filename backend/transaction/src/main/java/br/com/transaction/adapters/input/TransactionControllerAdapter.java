@@ -4,6 +4,7 @@ import br.com.transaction.adapters.input.dto.transaction.TransactionResponse;
 import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.domain.usecase.transaction.create.CreateTransactionUseCase;
+import br.com.transaction.domain.usecase.transaction.read.id.FindTransactionByIdUseCase;
 import br.com.transaction.domain.usecase.transaction.read.pageable.FindPageableTransactionsUseCase;
 import br.com.transaction.globals.PageResponse;
 import br.com.transaction.ports.input.TransactionControllerPort;
@@ -18,11 +19,15 @@ public class TransactionControllerAdapter implements TransactionControllerPort {
 
     private final CreateTransactionUseCase createTransactionUseCase;
     private final FindPageableTransactionsUseCase findPageableTransactionsUseCase;
+    private final FindTransactionByIdUseCase findTransactionByIdUseCase;
 
     public TransactionControllerAdapter(CreateTransactionUseCase createTransactionUseCase,
-                                        FindPageableTransactionsUseCase findPageableTransactionsUseCase) {
+                                        FindPageableTransactionsUseCase findPageableTransactionsUseCase,
+                                        FindTransactionByIdUseCase findTransactionByIdUseCase) {
+
         this.createTransactionUseCase = createTransactionUseCase;
         this.findPageableTransactionsUseCase = findPageableTransactionsUseCase;
+        this.findTransactionByIdUseCase = findTransactionByIdUseCase;
     }
 
     @Override
@@ -50,5 +55,15 @@ public class TransactionControllerAdapter implements TransactionControllerPort {
         return (pageResponse.getContent().isEmpty())
                 ? ResponseEntity.noContent().build()
                 : ResponseEntity.ok(pageResponse);
+    }
+
+    @Override
+    public ResponseEntity<TransactionResponse> findTransactionById(UUID id) {
+
+        TransactionResponse transactionResponse = findTransactionByIdUseCase.findTransactionById(id);
+
+        return (transactionResponse == null)
+                ? ResponseEntity.notFound().build()
+                : ResponseEntity.ok(transactionResponse);
     }
 }

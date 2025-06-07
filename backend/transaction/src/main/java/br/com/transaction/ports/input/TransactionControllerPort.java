@@ -46,4 +46,14 @@ public interface TransactionControllerPort {
             @RequestParam(value = "status", required = false) TransactionStatusEnum status,
             @RequestParam(value = "categoryId", required = false) UUID categoryId
     );
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Finds transaction by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Transaction found successfully",
+                    content = {@Content(mediaType = "application/json")}),
+    })
+    ResponseEntity<TransactionResponse> findTransactionById(
+            @PathVariable(value = "id") UUID id
+    );
 }
