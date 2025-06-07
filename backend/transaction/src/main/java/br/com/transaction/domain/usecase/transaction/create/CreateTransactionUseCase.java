@@ -1,6 +1,6 @@
-package br.com.transaction.domain.service;
+package br.com.transaction.domain.usecase.transaction.create;
 
-import br.com.transaction.adapters.input.dto.CreateTransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
 import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.domain.model.TransactionCategory;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @LogExecution
-public class CreateTransactionService {
+public class CreateTransactionUseCase {
 
     private final TransactionRepositoryPort transactionRepositoryPort;
     private final CategoryRepositoryPort categoryRepositoryPort;
 
-    public CreateTransactionService(TransactionRepositoryPort transactionRepositoryPort,
+    public CreateTransactionUseCase(TransactionRepositoryPort transactionRepositoryPort,
                                     CategoryRepositoryPort categoryRepositoryPort) {
 
         this.transactionRepositoryPort = transactionRepositoryPort;
