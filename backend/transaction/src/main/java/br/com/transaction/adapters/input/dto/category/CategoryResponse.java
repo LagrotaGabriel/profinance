@@ -23,4 +23,15 @@ public record CategoryResponse(
                         category.getType()
                 )).toList();
     }
+
+    public static CategoryResponse fromDomain(TransactionCategory category) {
+
+        if (category == null) return null;
+
+        return new CategoryResponse(
+                category.getId(),
+                category.getName(),
+                category.getType()
+        );
+    }
 }
