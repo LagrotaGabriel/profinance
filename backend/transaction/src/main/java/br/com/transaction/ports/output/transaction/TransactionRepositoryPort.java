@@ -11,6 +11,10 @@ public interface TransactionRepositoryPort {
 
     void save(Transaction transaction);
 
+    Transaction findById(
+            UUID id
+    );
+
     Page<Transaction> findPageableTransaction(
             Pageable pageable,
             Integer month,
