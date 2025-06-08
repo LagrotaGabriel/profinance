@@ -1,5 +1,6 @@
 package br.com.transaction.adapters.output.repository.transaction;
 
+import br.com.transaction.adapters.exception.models.EntityNotFoundException;
 import br.com.transaction.adapters.output.entity.TransactionEntity;
 import br.com.transaction.adapters.output.mapper.TransactionMapper;
 import br.com.transaction.domain.model.Transaction;
@@ -33,10 +34,8 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
         Optional<TransactionEntity> transactionEntityOptional = transactionJpaRepository.findById(id);
 
-        if (transactionEntityOptional.isEmpty()) {
-            // TODO IMPL CUSTOM EXCEPTION
-            throw new IllegalArgumentException("Transaction not found with id: " + id);
-        }
+        if (transactionEntityOptional.isEmpty())
+            throw new EntityNotFoundException("Transaction not found with id: " + id);
 
         TransactionEntity transactionEntity = transactionEntityOptional.get();
         return TransactionMapper.toDomain(transactionEntity);

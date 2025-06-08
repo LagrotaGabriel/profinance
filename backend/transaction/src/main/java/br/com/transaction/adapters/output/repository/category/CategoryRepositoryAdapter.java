@@ -1,5 +1,6 @@
 package br.com.transaction.adapters.output.repository.category;
 
+import br.com.transaction.adapters.exception.models.EntityNotFoundException;
 import br.com.transaction.adapters.output.entity.TransactionCategoryEntity;
 import br.com.transaction.adapters.output.mapper.TransactionCategoryMapper;
 import br.com.transaction.domain.model.TransactionCategory;
@@ -32,10 +33,8 @@ public class CategoryRepositoryAdapter implements CategoryRepositoryPort {
 
         Optional<TransactionCategoryEntity> categoryEntityOptional = categoryJpaRepository.findById(id);
 
-        if (categoryEntityOptional.isEmpty()) {
-            // TODO IMPL CUSTOM EXCEPTION
-            throw new IllegalArgumentException("Category not found with id: " + id);
-        }
+        if (categoryEntityOptional.isEmpty())
+            throw new EntityNotFoundException("Category not found with id: " + id);
 
         TransactionCategoryEntity categoryEntity = categoryEntityOptional.get();
         return TransactionCategoryMapper.toDomain(categoryEntity);

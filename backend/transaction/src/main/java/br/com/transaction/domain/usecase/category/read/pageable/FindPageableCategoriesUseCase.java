@@ -1,6 +1,7 @@
 package br.com.transaction.domain.usecase.category.read.pageable;
 
 import br.com.transaction.adapters.input.dto.category.CategoryResponse;
+import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.TransactionCategory;
 import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.globals.PageResponse;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@LogExecution
 public class FindPageableCategoriesUseCase {
 
     private final CategoryRepositoryPort categoryRepositoryPort;
