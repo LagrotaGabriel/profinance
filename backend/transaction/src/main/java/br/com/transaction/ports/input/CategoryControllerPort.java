@@ -1,11 +1,13 @@
 package br.com.transaction.ports.input;
 
+import br.com.transaction.adapters.exception.models.StandardError;
 import br.com.transaction.adapters.input.dto.category.CategoryResponse;
 import br.com.transaction.adapters.input.dto.category.create.CreateCategoryRequest;
 import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.globals.PageResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,12 +23,14 @@ import java.util.UUID;
 @RequestMapping("/profinance/api/v1/category")
 public interface CategoryControllerPort {
 
-    // TODO ADD API ERROR RESPONSES
-
     @PostMapping
     @Operation(summary = "Creates a new category")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Category created successfully",
+                    content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "400", description = "Invalid request",
+                    content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "409", description = "Category already exists",
                     content = {@Content(mediaType = "application/json")}),
     })
     ResponseEntity<Void> createNewCategory(
@@ -50,6 +54,9 @@ public interface CategoryControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Category found successfully",
                     content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", description = "Category not found",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StandardError.class))}),
     })
     ResponseEntity<CategoryResponse> findCategoryById(
             @PathVariable(value = "id") UUID id

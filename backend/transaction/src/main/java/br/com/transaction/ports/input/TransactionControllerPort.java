@@ -1,11 +1,13 @@
 package br.com.transaction.ports.input;
 
+import br.com.transaction.adapters.exception.models.StandardError;
 import br.com.transaction.adapters.input.dto.transaction.TransactionResponse;
 import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.globals.PageResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,13 +23,13 @@ import java.util.UUID;
 @RequestMapping("/profinance/api/v1/transaction")
 public interface TransactionControllerPort {
 
-    // TODO ADD API ERROR RESPONSES
-
     @PostMapping
     @Operation(summary = "Creates a new transaction")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Transaction created successfully",
                     content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "400", description = "Invalid request",
+                    content = {@Content(mediaType = "application/json")})
     })
     ResponseEntity<Void> createNewTransaction(
             @Valid @RequestBody CreateTransactionRequest createTransactionRequest
@@ -37,7 +39,7 @@ public interface TransactionControllerPort {
     @Operation(summary = "Finds pageable transactions")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Transactions found successfully",
-                    content = {@Content(mediaType = "application/json")}),
+                    content = {@Content(mediaType = "application/json")})
     })
     ResponseEntity<PageResponse<TransactionResponse>> findPageableTransactions(
             @PageableDefault(size = 20) Pageable pageable,
@@ -52,6 +54,9 @@ public interface TransactionControllerPort {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Transaction found successfully",
                     content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", description = "Transaction not found",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StandardError.class))})
     })
     ResponseEntity<TransactionResponse> findTransactionById(
             @PathVariable(value = "id") UUID id
