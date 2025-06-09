@@ -21,6 +21,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
                 "br.com.transaction.adapters.output.entity"
         }
 )
+@ComponentScan(
+        basePackages = {
+                "br.com.transaction"
+        }
+)
 public class MainApplication {
 
     public static void main(String[] args) {
