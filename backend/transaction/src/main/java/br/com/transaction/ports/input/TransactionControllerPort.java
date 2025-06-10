@@ -1,8 +1,8 @@
 package br.com.transaction.ports.input;
 
 import br.com.transaction.adapters.exception.models.StandardError;
-import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
 import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.globals.PageResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -59,6 +59,35 @@ public interface TransactionControllerPort {
                             schema = @Schema(implementation = StandardError.class))})
     })
     ResponseEntity<TransactionResponse> findTransactionById(
+            @PathVariable(value = "id") UUID id
+    );
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Updates an existing transaction")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Transaction updated successfully",
+                    content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", description = "Transaction not found",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StandardError.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid request",
+                    content = {@Content(mediaType = "application/json")})
+    })
+    ResponseEntity<Void> updateTransaction(
+            @PathVariable(value = "id") UUID id,
+            @RequestBody @Valid TransactionRequest transactionRequest
+    );
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Updates an existing transaction")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Transaction deleted successfully",
+                    content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", description = "Transaction not found",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StandardError.class))})
+    })
+    ResponseEntity<Void> deleteTransaction(
             @PathVariable(value = "id") UUID id
     );
 }
