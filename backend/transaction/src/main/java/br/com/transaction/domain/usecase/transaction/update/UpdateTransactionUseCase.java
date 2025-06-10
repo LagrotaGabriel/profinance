@@ -3,6 +3,7 @@ package br.com.transaction.domain.usecase.transaction.update;
 import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.domain.model.TransactionCategory;
+import br.com.transaction.domain.usecase.transaction.util.TransactionUtil;
 import br.com.transaction.ports.output.category.CategoryRepositoryPort;
 import br.com.transaction.ports.output.transaction.TransactionRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class UpdateTransactionUseCase {
         }
 
         Transaction existingTransaction = transactionRepositoryPort.findById(id);
+
+        TransactionUtil.validateTransactionStatus(request);
 
         TransactionCategory transactionCategory =
                 categoryRepositoryPort.findById(

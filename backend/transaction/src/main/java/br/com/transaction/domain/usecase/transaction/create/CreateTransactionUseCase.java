@@ -5,6 +5,7 @@ import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.domain.model.TransactionCategory;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
+import br.com.transaction.domain.usecase.transaction.util.TransactionUtil;
 import br.com.transaction.ports.output.category.CategoryRepositoryPort;
 import br.com.transaction.ports.output.transaction.TransactionRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class CreateTransactionUseCase {
                         transactionRequest.categoryId()
                 );
 
-        validateTransactionStatus(transactionRequest);
+        TransactionUtil.validateTransactionStatus(transactionRequest);
 
         Transaction transaction = new Transaction(
                 transactionRequest.description(),
@@ -42,20 +43,5 @@ public class CreateTransactionUseCase {
         );
 
         transactionRepositoryPort.save(transaction);
-    }
-
-    public void validateTransactionStatus(TransactionRequest transactionRequest) {
-
-        if (TransactionStatusEnum.PENDING.equals(transactionRequest.status()) && transactionRequest.executionDate() != null) {
-            throw new IllegalArgumentException("Execution date must be null for pending transactions.");
-        }
-
-        if (TransactionStatusEnum.CANCELED.equals(transactionRequest.status()) && transactionRequest.executionDate() != null) {
-            throw new IllegalArgumentException("Execution date must be null for canceled transactions.");
-        }
-
-        if (TransactionStatusEnum.COMPLETED.equals(transactionRequest.status()) && transactionRequest.executionDate() == null) {
-            throw new IllegalArgumentException("Execution date must not be null for completed transactions.");
-        }
     }
 }
