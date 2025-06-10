@@ -9,6 +9,7 @@ import br.com.transaction.ports.output.transaction.TransactionRepositoryPort;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     }
 
     @Override
+    @Transactional
     public void save(Transaction transaction) {
         TransactionEntity entity = TransactionMapper.toEntity(transaction);
         transactionJpaRepository.save(entity);
@@ -61,5 +63,16 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
                 );
 
         return TransactionMapper.toDomainPage(transactionEntityPage);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(UUID id) {
+
+        if (!transactionJpaRepository.existsById(id)) {
+            throw new EntityNotFoundException("Transaction not found with id: " + id);
+        }
+
+        transactionJpaRepository.deleteById(id);
     }
 }

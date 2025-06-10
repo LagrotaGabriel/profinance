@@ -22,4 +22,8 @@ public interface TransactionRepositoryPort {
             TransactionStatusEnum status,
             UUID categoryId
     );
+
+    void deleteById(
+            UUID id
+    );
 }
