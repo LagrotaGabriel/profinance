@@ -1,5 +1,6 @@
 package br.com.transaction.domain.model;
 
+import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.adapters.output.entity.TransactionEntity;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import lombok.Getter;
@@ -52,6 +53,21 @@ public class Transaction {
         this.executionDate = executionDate;
         this.status = status;
         this.category = category;
+    }
+
+    public void updateData(TransactionRequest request, TransactionCategory transactionCategory) {
+
+        if (transactionCategory == null)
+            throw new IllegalArgumentException("Transaction category cannot be null");
+        if (request == null)
+            throw new IllegalArgumentException("Invalid transaction update request");
+
+        this.description = request.description();
+        this.value = request.value();
+        this.expirationDate = request.expirationDate();
+        this.executionDate = request.executionDate();
+        this.status = request.status();
+        this.category = transactionCategory;
     }
 
     public boolean isExpired() {
