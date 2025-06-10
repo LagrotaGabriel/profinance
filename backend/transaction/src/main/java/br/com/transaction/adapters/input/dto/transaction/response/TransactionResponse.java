@@ -1,4 +1,4 @@
-package br.com.transaction.adapters.input.dto.transaction;
+package br.com.transaction.adapters.input.dto.transaction.response;
 
 import br.com.transaction.domain.model.Transaction;
 import io.swagger.v3.oas.annotations.media.Schema;

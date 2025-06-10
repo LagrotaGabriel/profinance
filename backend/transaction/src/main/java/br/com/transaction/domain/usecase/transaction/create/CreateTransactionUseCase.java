@@ -1,6 +1,6 @@
 package br.com.transaction.domain.usecase.transaction.create;
 
-import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.domain.model.TransactionCategory;
@@ -23,38 +23,38 @@ public class CreateTransactionUseCase {
         this.categoryRepositoryPort = categoryRepositoryPort;
     }
 
-    public void saveTransaction(CreateTransactionRequest createTransactionRequest) {
+    public void saveTransaction(TransactionRequest transactionRequest) {
 
         TransactionCategory transactionCategory =
                 categoryRepositoryPort.findById(
-                        createTransactionRequest.categoryId()
+                        transactionRequest.categoryId()
                 );
 
-        validateTransactionStatus(createTransactionRequest);
+        validateTransactionStatus(transactionRequest);
 
         Transaction transaction = new Transaction(
-                createTransactionRequest.description(),
-                createTransactionRequest.value(),
-                createTransactionRequest.expirationDate(),
-                createTransactionRequest.executionDate(),
-                createTransactionRequest.status(),
+                transactionRequest.description(),
+                transactionRequest.value(),
+                transactionRequest.expirationDate(),
+                transactionRequest.executionDate(),
+                transactionRequest.status(),
                 transactionCategory
         );
 
         transactionRepositoryPort.save(transaction);
     }
 
-    public void validateTransactionStatus(CreateTransactionRequest createTransactionRequest) {
+    public void validateTransactionStatus(TransactionRequest transactionRequest) {
 
-        if (TransactionStatusEnum.PENDING.equals(createTransactionRequest.status()) && createTransactionRequest.executionDate() != null) {
+        if (TransactionStatusEnum.PENDING.equals(transactionRequest.status()) && transactionRequest.executionDate() != null) {
             throw new IllegalArgumentException("Execution date must be null for pending transactions.");
         }
 
-        if (TransactionStatusEnum.CANCELED.equals(createTransactionRequest.status()) && createTransactionRequest.executionDate() != null) {
+        if (TransactionStatusEnum.CANCELED.equals(transactionRequest.status()) && transactionRequest.executionDate() != null) {
             throw new IllegalArgumentException("Execution date must be null for canceled transactions.");
         }
 
-        if (TransactionStatusEnum.COMPLETED.equals(createTransactionRequest.status()) && createTransactionRequest.executionDate() == null) {
+        if (TransactionStatusEnum.COMPLETED.equals(transactionRequest.status()) && transactionRequest.executionDate() == null) {
             throw new IllegalArgumentException("Execution date must not be null for completed transactions.");
         }
     }

@@ -1,6 +1,6 @@
 package br.com.transaction.domain.usecase.transaction.read.id;
 
-import br.com.transaction.adapters.input.dto.transaction.TransactionResponse;
+import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
 import br.com.transaction.annotations.LogExecution;
 import br.com.transaction.domain.model.Transaction;
 import br.com.transaction.ports.output.transaction.TransactionRepositoryPort;

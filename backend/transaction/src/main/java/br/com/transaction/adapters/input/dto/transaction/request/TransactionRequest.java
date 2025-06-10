@@ -1,4 +1,4 @@
-package br.com.transaction.adapters.input.dto.transaction.create;
+package br.com.transaction.adapters.input.dto.transaction.request;
 
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Schema(description = "Request DTO for creating a transaction")
-public record CreateTransactionRequest(
+public record TransactionRequest(
 
         @NotEmpty(message = "Description cannot be empty")
         @Size(max = 60, message = "Description must not exceed 60 characters")

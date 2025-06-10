@@ -1,7 +1,7 @@
 package br.com.transaction.adapters.input;
 
-import br.com.transaction.adapters.input.dto.transaction.TransactionResponse;
-import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
+import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.domain.usecase.transaction.create.CreateTransactionUseCase;
 import br.com.transaction.domain.usecase.transaction.read.id.FindTransactionByIdUseCase;
@@ -31,8 +31,8 @@ public class TransactionControllerAdapter implements TransactionControllerPort {
     }
 
     @Override
-    public ResponseEntity<Void> createNewTransaction(CreateTransactionRequest createTransactionRequest) {
-        createTransactionUseCase.saveTransaction(createTransactionRequest);
+    public ResponseEntity<Void> createNewTransaction(TransactionRequest transactionRequest) {
+        createTransactionUseCase.saveTransaction(transactionRequest);
         return ResponseEntity.status(201).build();
     }
 

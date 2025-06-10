@@ -1,8 +1,8 @@
 package br.com.transaction.ports.input;
 
 import br.com.transaction.adapters.exception.models.StandardError;
-import br.com.transaction.adapters.input.dto.transaction.TransactionResponse;
-import br.com.transaction.adapters.input.dto.transaction.create.CreateTransactionRequest;
+import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
+import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.globals.PageResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +32,7 @@ public interface TransactionControllerPort {
                     content = {@Content(mediaType = "application/json")})
     })
     ResponseEntity<Void> createNewTransaction(
-            @Valid @RequestBody CreateTransactionRequest createTransactionRequest
+            @Valid @RequestBody TransactionRequest transactionRequest
     );
 
     @GetMapping
