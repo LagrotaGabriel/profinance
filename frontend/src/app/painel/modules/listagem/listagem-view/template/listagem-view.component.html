@@ -1,3 +1,78 @@
 <section>
-    Teste
+    <div class="row content">
+
+        <div class="row title-container">
+            <h1 class="title">Listagem</h1>
+            <h3 class="subtitle">Listagem de itens</h3>
+        </div>
+
+        <div class="hr-container">
+            <hr class="divider">
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Pesquisar..." class="search-input">
+            <input type="month" placeholder="Mês e ano" class="date-input">
+            <select class="filter-select">
+                <option value="todos">Todos</option>
+                <option value="entradas">Entradas</option>
+                <option value="saidas">Saídas</option>
+            </select>
+            <button class="search-button" type="button">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Vencimento</th>
+                        <th>Tipo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td">
+                            <span>
+                                Aluguel
+                            </span>
+                        </td>
+                        <td class="td">
+                            <span>
+                                R$ 3.500,00
+                            </span>
+                        </td>
+                        <td class="td">
+                            <span>
+                                01 de Julho de 2025
+                            </span>
+                        </td>
+                        <td class="td">
+                            <span>
+                                Saída
+                            </span>
+                        </td>
+                        <td class="td">
+                            <span class="status paid">
+                                Pago
+                            </span>
+                        </td>
+                        <td class="td td-actions">
+                            <button>
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button>
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>

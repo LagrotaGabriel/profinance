@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ListagemViewComponent } from './listagem-view/ts/listagem-view.component';
 import { ListagemRoutingModule } from './listagem.routes';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -10,8 +11,9 @@ import { ListagemRoutingModule } from './listagem.routes';
   ],
   imports: [
     CommonModule,
-    RouterModule, 
-    ListagemRoutingModule
+    RouterModule,
+    ListagemRoutingModule,
+    MatIconModule
   ]
 })
 export class ListagemModule { }

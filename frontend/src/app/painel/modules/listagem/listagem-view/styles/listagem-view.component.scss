@@ -1,9 +1,164 @@
 @use '../../../../../../../dist/themes.scss';
+@use '../../../../../../../dist/mixins.scss';
 
 section {
     background-color: var(--container-background);
     border: 1px solid var(--border-color);
+    @include mixins.fullSize();
     border-radius: 15px;
-    height: 100%;
-    width: 100%;
+    padding: 2rem;
+
+    .content {
+        @include mixins.centerContent();
+
+        .title-container {
+
+            .title {
+                @include mixins.title();
+            }
+
+            .subtitle {
+                @include mixins.subtitle();
+            }
+        }
+
+        .hr-container {
+            @include mixins.centerContent();
+            margin-top: -0.5rem;
+
+            .divider {
+                background-color: var(--divider-color);
+                margin: 1rem 0;
+                height: 1px;
+                width: 100%;
+            }
+        }
+
+        .search-container {
+            @include mixins.centerContent();
+            margin-bottom: 1rem;
+            width: 100%;
+            gap: 1rem;
+
+            .search-input {
+                background-color: var(--input-background);
+                border: 1px solid var(--border-color);
+                @include mixins.fullSize();
+                color: var(--primary-text);
+                border-radius: 5px;
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+
+            .date-input {
+                background-color: var(--input-background);
+                border: 1px solid var(--border-color);
+                color: var(--primary-text);
+                border-radius: 5px;
+                padding: 0.4rem;
+                font-size: 1rem;
+            }
+
+            .filter-select {
+                background-color: var(--input-background);
+                border: 1px solid var(--border-color);
+                color: var(--primary-text);
+                border-radius: 5px;
+                padding: 0.4rem;
+                font-size: 1rem;
+                height: 100%;
+            }
+
+            .search-button {
+                background-color: var(--primary-color);
+                @include mixins.notSelectableContent();
+                @include mixins.centerContent();
+
+                mat-icon {
+                    color: var(--container-background);
+                    @include mixins.fullSize();
+                }
+
+                padding: 0.4rem 0.5rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--primary-color-hover);
+                    transition: 0.2s ease-in-out;
+                    color: --border-color;
+                }
+            }
+        }
+
+        .table-container {
+            @include mixins.selectableContent();
+            overflow-x: auto;
+            height: 100%;
+            width: 100%;
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+
+                th,
+                td {
+                    border-bottom: 1px solid var(--border-color);
+                    text-align: left;
+                    padding: 0.5rem;
+                }
+
+                .td {
+
+                    span {
+                        color: var(--primary-text);
+                        font-size: 1rem;
+                    }
+
+                    &-actions {
+                        display: flex;
+                        gap: 0.5rem;
+
+                        button {
+                            background-color: var(--primary-color);
+                            @include mixins.notSelectableContent();
+                            @include mixins.centerContent();
+                            border-radius: 5px;
+                            cursor: pointer;
+                            padding: 0.3rem;
+                            border: none;
+
+                            mat-icon {
+                                color: var(--container-background);
+                                background-color: transparent;
+                                font-size: 1.2rem;
+                                height: 1.2rem;
+                                width: 1.2rem;
+                            }
+
+                            &:hover {
+                                transition: 0.3s ease-in-out;
+                                background-color: var(--primary-color-hover);
+
+                                mat-icon {
+                                    color: var(--border-color);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                th {
+                    background-color: var(--container-background);
+                    color: var(--primary-text);
+                }
+
+                tr:hover {
+                    background-color: var(--input-background);
+                }
+            }
+        }
+
+    }
 }
