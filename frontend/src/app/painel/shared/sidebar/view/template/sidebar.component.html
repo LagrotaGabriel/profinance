@@ -1,2 +1,30 @@
 <aside>
+    <ul class="sidebar-itens">
+        <li class="sidebar-item">
+            <button #listagem="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/listagem']"
+                tabindex="-1" [ngClass]="{'sidebar-button-ativo': listagem.isActive }" routerLinkActive>
+                <mat-icon>
+                    import_contacts
+                </mat-icon>
+            </button>
+        </li>
+
+        <li class="sidebar-item">
+            <button #cadastro="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/cadastro']"
+                tabindex="-1" [ngClass]="{'sidebar-button-ativo': cadastro.isActive }" routerLinkActive>
+                <mat-icon>
+                    add_box
+                </mat-icon>
+            </button>
+        </li>
+    </ul>
 </aside>
+
+<!-- <div #empresas="routerLinkActive" class="modulo" tabindex="-1" matRipple routerLinkActive
+        [routerLink]="['/painel/empresas/']" (click)="realizaAlteracaoDeModulo()">
+        <mat-icon fontIcon="store" class="modulo-icone"
+            [ngClass]="{'modulo-icone-ativo': empresas.isActive }"></mat-icon>
+        <p class="modulo-texto" [ngClass]="{'modulo-texto-ativo': empresas.isActive }">
+            Empresas
+        </p>
+    </div> -->

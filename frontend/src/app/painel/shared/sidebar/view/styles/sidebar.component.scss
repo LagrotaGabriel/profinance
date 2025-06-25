@@ -1,5 +1,48 @@
+@use '../../../../../../../dist/mixins.scss';
+
 aside {
     background-color: var(--secundary-color);
     height: 100%;
     width: 100%;
+
+    .sidebar-itens {
+        padding: 1rem 0;
+
+        .sidebar-item {
+            margin: 0.7rem 0;
+            width: 100%;
+            padding: 0;
+
+            .sidebar-button {
+                background-color: transparent;
+                outline: none;
+                border: none;
+                width: 100%;
+
+                mat-icon {
+                    @include mixins.centerContent();
+                    color: var(--secundary-text);
+                    font-size: 1.8rem;
+                    width: 100%;
+                }
+
+                span {
+                    @include mixins.centerContent();
+                    color: var(--secundary-text);
+                    font-size: 0.9rem;
+                    width: 100%;
+                }
+
+                &-ativo {
+                    mat-icon {
+                        color: var(--global-background);
+                    }
+
+                    span {
+                        color: var(--global-background);
+                    }
+                }
+            }
+        }
+    }
 }
