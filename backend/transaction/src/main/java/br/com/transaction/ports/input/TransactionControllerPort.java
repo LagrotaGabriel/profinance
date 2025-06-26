@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @Tag(name = "Transaction management")
+@CrossOrigin(origins = "${URL_FRONT}")
 @RequestMapping("/profinance/api/v1/transaction")
 public interface TransactionControllerPort {
 
