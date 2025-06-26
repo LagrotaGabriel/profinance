@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { TITLE_DESCRIPTION } from '../../../../../../consts/Globals';
+import { PageResponse } from '../../../../../../models/PageResponse';
+import { TransactionResponse } from '../../../models/TransactionResponse';
+import { ListagemViewAbstractionService } from '../../services/abstraction/listagem-view-abstraction.service';
 
 @Component({
   selector: 'listagem-view',
@@ -7,4 +14,34 @@ import { Component } from '@angular/core';
 })
 export class ListagemViewComponent {
 
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private abstractionService: ListagemViewAbstractionService,
+    private ref: ChangeDetectorRef
+  ) {
+    this.abstractionService.implementaInicializacaoDeComponente(this.activatedRoute);
+  }
+
+  ngAfterViewInit(): void {
+    this.titleService.setTitle(`${TITLE_DESCRIPTION} Transações`)
+    this.abstractionService.implementaInvocacaoDeRequisicaoDeObtencaoDeItensPaginados();
+    this.ref.detectChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.abstractionService.implementaDestruicaoDeComponente();
+  }
+
+  protected obtemrPageResponse(): PageResponse<TransactionResponse[]> | undefined {
+    return this.abstractionService.implementaObtencaoDePageResponse();
+  }
+
+  protected obtemConteudo(): TransactionResponse[] {
+    return this.abstractionService.implementaObtencaoDeConteudo();
+  }
+
+  protected obtemFormularioBusca(): FormGroup | undefined {
+    return this.abstractionService.implementaObtencaoDeFormulario();
+  }
 }

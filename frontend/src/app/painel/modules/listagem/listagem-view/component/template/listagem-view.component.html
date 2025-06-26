@@ -31,41 +31,35 @@
                         <th>Valor</th>
                         <th>Vencimento</th>
                         <th>Categoria</th>
-                        <th>Tipo</th>
                         <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let item of obtemConteudo()">
                         <td class="td">
                             <span>
-                                Aluguel
+                                {{ item.description }}
                             </span>
                         </td>
                         <td class="td">
                             <span>
-                                R$ 3.500,00
+                                {{ item.value | currency: 'BRL': 'symbol' }}
                             </span>
                         </td>
                         <td class="td">
                             <span>
-                                01 de Julho de 2025
+                                {{ item.expirationDate| date: 'dd/MM/yyyy' }}
                             </span>
                         </td>
                         <td class="td">
                             <span>
-                                Essenciais
+                                {{ item.categoryName }}
                             </span>
                         </td>
                         <td class="td">
                             <span>
-                                Saída
-                            </span>
-                        </td>
-                        <td class="td">
-                            <span class="status paid">
-                                Pago
+                                {{ item.status }}
                             </span>
                         </td>
                         <td class="td td-actions">
