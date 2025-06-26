@@ -3,6 +3,7 @@ package br.com.transaction.adapters.input.dto.transaction.response;
 import br.com.transaction.domain.model.Transaction;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Schema(description = "Response DTO for a transaction")
@@ -15,7 +16,7 @@ public record TransactionResponse(
         String description,
 
         @Schema(description = "Value of the transaction", example = "150.75", minimum = "1", maximum = "999999999")
-        String value,
+        BigDecimal value,
 
         @Schema(description = "Creation timestamp of the transaction", example = "2023-10-01T12:00:00Z")
         String creationTimeStamp,
@@ -43,7 +44,7 @@ public record TransactionResponse(
         return new TransactionResponse(
                 transaction.getId().toString(),
                 transaction.getDescription(),
-                transaction.getValue().toString(),
+                transaction.getValue(),
                 transaction.getCreationTimeStamp().toString(),
                 (transaction.getExpirationDate() != null)
                         ? transaction.getExpirationDate().toString()
