@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { CadastroViewComponent } from "./cadastro-view/cadastro-view.component";
+import { CadastroViewComponent } from "./cadastro-view/component/ts/cadastro-view.component";
 
 const routes: Routes = [
     {

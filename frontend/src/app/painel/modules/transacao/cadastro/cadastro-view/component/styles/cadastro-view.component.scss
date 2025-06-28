@@ -1,0 +1,37 @@
+@use '../../../../../../../../../dist/themes.scss';
+@use '../../../../../../../../../dist/mixins.scss';
+
+section {
+    background-color: var(--container-background);
+    border: 1px solid var(--border-color);
+    @include mixins.fullSize();
+    border-radius: 15px;
+    padding: 2rem;
+
+    .content {
+        @include mixins.centerContent();
+
+        .title-container {
+
+            .title {
+                @include mixins.title();
+            }
+
+            .subtitle {
+                @include mixins.subtitle();
+            }
+        }
+
+        .hr-container {
+            @include mixins.centerContent();
+            margin-top: -0.5rem;
+
+            .divider {
+                background-color: var(--divider-color);
+                margin: 1rem 0;
+                height: 1px;
+                width: 100%;
+            }
+        }
+    }
+}

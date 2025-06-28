@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CadastroViewComponent } from './cadastro-view/cadastro-view.component';
+import { CadastroViewComponent } from './cadastro-view/component/ts/cadastro-view.component';
 
 @NgModule({
   declarations: [
