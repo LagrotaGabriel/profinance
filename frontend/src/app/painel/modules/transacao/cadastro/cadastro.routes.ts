@@ -5,7 +5,7 @@ import { CadastroViewComponent } from "./cadastro-view/cadastro-view.component";
 const routes: Routes = [
     {
         path: '',
-        component: CadastroViewComponent
+        component: CadastroViewComponent, 
     },
     {
         path: '**',
