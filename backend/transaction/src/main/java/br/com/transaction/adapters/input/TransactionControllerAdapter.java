@@ -2,6 +2,7 @@ package br.com.transaction.adapters.input;
 
 import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
+import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.domain.usecase.transaction.create.CreateTransactionUseCase;
 import br.com.transaction.domain.usecase.transaction.delete.DeleteTransactionUseCase;
@@ -48,7 +49,9 @@ public class TransactionControllerAdapter implements TransactionControllerPort {
     public ResponseEntity<PageResponse<TransactionResponse>> findPageableTransactions(Pageable pageable,
                                                                                       Integer month,
                                                                                       Integer year,
+                                                                                      String description,
                                                                                       TransactionStatusEnum status,
+                                                                                      TransactionCategoryTypeEnum type,
                                                                                       UUID categoryId) {
 
         PageResponse<TransactionResponse> pageResponse =
@@ -56,7 +59,9 @@ public class TransactionControllerAdapter implements TransactionControllerPort {
                         pageable,
                         month,
                         year,
+                        description,
                         status,
+                        type,
                         categoryId
                 );
 

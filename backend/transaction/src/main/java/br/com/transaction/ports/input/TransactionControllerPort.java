@@ -3,6 +3,7 @@ package br.com.transaction.ports.input;
 import br.com.transaction.adapters.exception.models.StandardError;
 import br.com.transaction.adapters.input.dto.transaction.request.TransactionRequest;
 import br.com.transaction.adapters.input.dto.transaction.response.TransactionResponse;
+import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import br.com.transaction.globals.PageResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,7 +47,9 @@ public interface TransactionControllerPort {
             @PageableDefault(size = 20) Pageable pageable,
             @RequestParam(value = "month") Integer month,
             @RequestParam(value = "year") Integer year,
+            @RequestParam(value = "description", required = false) String description,
             @RequestParam(value = "status", required = false) TransactionStatusEnum status,
+            @RequestParam(value = "type", required = false) TransactionCategoryTypeEnum type,
             @RequestParam(value = "categoryId", required = false) UUID categoryId
     );
 

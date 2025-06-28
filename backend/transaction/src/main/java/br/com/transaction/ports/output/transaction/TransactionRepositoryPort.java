@@ -1,6 +1,7 @@
 package br.com.transaction.ports.output.transaction;
 
 import br.com.transaction.domain.model.Transaction;
+import br.com.transaction.domain.model.enums.TransactionCategoryTypeEnum;
 import br.com.transaction.domain.model.enums.TransactionStatusEnum;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,9 @@ public interface TransactionRepositoryPort {
             Pageable pageable,
             Integer month,
             Integer year,
+            String description,
             TransactionStatusEnum status,
+            TransactionCategoryTypeEnum type,
             UUID categoryId
     );
 
