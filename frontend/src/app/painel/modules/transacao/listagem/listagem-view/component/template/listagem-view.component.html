@@ -17,18 +17,16 @@
                 </button>
             </div>
 
-            <div class="search-container">
-                <input type="text" placeholder="Pesquisar..." class="search-input">
-                <input type="month" placeholder="Mês e ano" class="date-input">
-                <select class="filter-select">
-                    <option value="todos">Todos</option>
-                    <option value="entradas">Entradas</option>
-                    <option value="saidas">Saídas</option>
+            <form *ngIf="obtemFormularioBusca() != undefined" [formGroup]="obtemFormularioBusca()"
+                class="search-container">
+                <input type="text" placeholder="Pesquisar..." class="search-input" formControlName="valorPesquisa">
+                <input type="month" placeholder="Mês e ano" class="date-input" formControlName="mesAnoPesquisa">
+                <select class="filter-select" formControlName="tipoPesquisa" formControlName="tipoPesquisa">
+                    <option value="ALL">Todos</option>
+                    <option value="INPUT">Entradas</option>
+                    <option value="OUTPUT">Saídas</option>
                 </select>
-                <button class="search-button" type="button">
-                    <mat-icon>search</mat-icon>
-                </button>
-            </div>
+            </form>
         </div>
 
         <div class="table-container">

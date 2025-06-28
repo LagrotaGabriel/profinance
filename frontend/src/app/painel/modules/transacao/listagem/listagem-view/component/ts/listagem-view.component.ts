@@ -41,7 +41,7 @@ export class ListagemViewComponent {
     return this.abstractionService.implementaObtencaoDeConteudo();
   }
 
-  protected obtemFormularioBusca(): FormGroup | undefined {
+  protected obtemFormularioBusca(): any {
     return this.abstractionService.implementaObtencaoDeFormulario();
   }
 }

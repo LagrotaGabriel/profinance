@@ -51,12 +51,12 @@ export class ListagemViewFormService {
           Validators.maxLength(70)
         ]
       ],
-      mesAnoPesquisa: [null,
-        [
-          Validators.required
-        ]
+      mesAnoPesquisa: [Util.getMesAnoAtual(),
+      [
+        Validators.required
+      ]
       ],
-      tipoPesquisa: [null,
+      tipoPesquisa: ['ALL',
         [
           Validators.required
         ]
