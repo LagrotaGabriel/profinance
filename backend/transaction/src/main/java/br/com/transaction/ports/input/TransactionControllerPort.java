@@ -44,7 +44,7 @@ public interface TransactionControllerPort {
                     content = {@Content(mediaType = "application/json")})
     })
     ResponseEntity<PageResponse<TransactionResponse>> findPageableTransactions(
-            @PageableDefault(size = 20) Pageable pageable,
+            @PageableDefault(size = 200) Pageable pageable,
             @RequestParam(value = "month") Integer month,
             @RequestParam(value = "year") Integer year,
             @RequestParam(value = "description", required = false) String description,
