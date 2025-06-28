@@ -61,7 +61,7 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
                         pageable,
                         startDate,
                         endDate,
-                        description,
+                        (description != null) ? description.toUpperCase() : null,
                         status,
                         type,
                         categoryId

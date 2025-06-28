@@ -17,7 +17,7 @@ public interface TransactionJpaRepository extends JpaRepository<TransactionEntit
             "SELECT t FROM TransactionEntity t " +
                     "WHERE (:status IS NULL OR t.status = :status) " +
                     "AND (:categoryId IS NULL OR t.category.id = :categoryId) " +
-                    "AND (:description IS NULL OR t.description = :description) " +
+                    "AND (:description IS NULL OR UPPER(t.description) LIKE %:description%) " +
                     "AND (:type IS NULL OR t.category.type = :type) " +
                     "AND ((t.expirationDate BETWEEN :startDate AND :endDate) OR (t.executionDate BETWEEN :startDate AND :endDate))"
     )
