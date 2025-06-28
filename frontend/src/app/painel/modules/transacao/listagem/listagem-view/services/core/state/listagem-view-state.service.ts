@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { PageResponse } from '../../../../../../../models/PageResponse';
+import { PageResponse } from '../../../../../../../../models/PageResponse';
 import { TransactionResponse } from '../../../../models/TransactionResponse';
 
 @Injectable({

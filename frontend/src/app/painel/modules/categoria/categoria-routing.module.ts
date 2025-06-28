@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListagemViewComponent } from './listagem-view/component/ts/listagem-view.component';
 
 const routes: Routes = [
     {
-        path: '',
-        component: ListagemViewComponent,
-        children: [
-        ]
+        path: 'listagem',
+        // loadChildren: () => import('./listagem/listagem.module').then(m => m.ListagemModule)
+    },
+    {
+        path: '**',
+        redirectTo: 'listagem'
     }
 ];
 
@@ -15,4 +16,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ListagemRoutingModule { }
+export class CategoriaRoutingModule { }

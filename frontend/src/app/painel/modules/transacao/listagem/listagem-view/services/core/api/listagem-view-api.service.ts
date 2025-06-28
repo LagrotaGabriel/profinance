@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PageResponse } from '../../../../../../../models/PageResponse';
+import { PageResponse } from '../../../../../../../../models/PageResponse';
 import { TransactionResponse } from '../../../../models/TransactionResponse';
 import { ListagemViewFormService } from '../form/listagem-view-form.service';
 import { ListagemViewStateService } from '../state/listagem-view-state.service';

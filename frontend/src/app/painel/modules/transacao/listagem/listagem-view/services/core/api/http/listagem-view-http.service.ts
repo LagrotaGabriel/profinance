@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { API_CONFIG } from '../../../../../../../../config/api-config';
-import { PageResponse } from '../../../../../../../../models/PageResponse';
+import { API_CONFIG } from '../../../../../../../../../config/api-config';
+import { PageResponse } from '../../../../../../../../../models/PageResponse';
 import { TransactionResponse } from '../../../../../models/TransactionResponse';
 
 @Injectable({

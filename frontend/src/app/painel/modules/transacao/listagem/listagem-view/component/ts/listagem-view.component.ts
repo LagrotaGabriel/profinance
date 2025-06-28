@@ -2,8 +2,8 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { TITLE_DESCRIPTION } from '../../../../../../consts/Globals';
-import { PageResponse } from '../../../../../../models/PageResponse';
+import { TITLE_DESCRIPTION } from '../../../../../../../consts/Globals';
+import { PageResponse } from '../../../../../../../models/PageResponse';
 import { TransactionResponse } from '../../../models/TransactionResponse';
 import { ListagemViewAbstractionService } from '../../services/abstraction/listagem-view-abstraction.service';
 

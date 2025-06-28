@@ -8,16 +8,16 @@ const routes: Routes = [
     component: PainelViewComponent,
     children: [
       {
-        path: 'listagem',
-        loadChildren: () => import('./modules/listagem/listagem.module').then(m => m.ListagemModule)
+        path: 'transacao',
+        loadChildren: () => import('./modules/transacao/transacao-routing.module').then(m => m.TransacaoRoutingModule)
       },
       {
-        path: 'cadastro',
-        loadChildren: () => import('./modules/cadastro/cadastro.module').then(m => m.CadastroModule)
+        path: 'categoria',
+        loadChildren: () => import('./modules/categoria/categoria-routing.module').then(m => m.CategoriaRoutingModule)
       },
       {
         path: '**',
-        redirectTo: 'listagem'
+        redirectTo: 'transacao'
       }
     ]
   }

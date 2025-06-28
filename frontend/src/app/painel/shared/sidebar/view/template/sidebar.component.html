@@ -1,24 +1,26 @@
 <aside>
     <ul class="sidebar-itens">
         <li class="sidebar-item">
-            <button #listagem="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/listagem']"
-                tabindex="-1" [ngClass]="{'sidebar-button-ativo': listagem.isActive }" routerLinkActive>
+            <button #transacao="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/transacao']"
+                tabindex="-1" [ngClass]="{'sidebar-button-ativo': transacao.isActive }" routerLinkActive>
                 <mat-icon>
-                    import_contacts
+                    attach_money
                 </mat-icon>
             </button>
         </li>
 
         <li class="sidebar-item">
-            <button #cadastro="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/cadastro']"
-                tabindex="-1" [ngClass]="{'sidebar-button-ativo': cadastro.isActive }" routerLinkActive>
+            <button #categoria="routerLinkActive" class="sidebar-button" [routerLink]="['/painel/categoria']"
+                tabindex="-1" [ngClass]="{'sidebar-button-ativo': categoria.isActive }" routerLinkActive>
                 <mat-icon>
-                    add_box
+                    category
                 </mat-icon>
             </button>
         </li>
     </ul>
 </aside>
+
+<!-- // TODO AJUSTAR SIDEBAR -->
 
 <!-- <div #empresas="routerLinkActive" class="modulo" tabindex="-1" matRipple routerLinkActive
         [routerLink]="['/painel/empresas/']" (click)="realizaAlteracaoDeModulo()">
