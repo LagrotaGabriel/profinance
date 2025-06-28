@@ -35,68 +35,6 @@ export class Util {
         return false;
     }
 
-    public static somaMesesNaDataAtual(qtdMeses: number): string {
-        let hoje = new Date();
-
-        let formattedDate: any;
-        hoje.setMonth(hoje.getMonth() + qtdMeses);
-        let mesAtualizado = hoje.getMonth() + 1;
-
-        switch (mesAtualizado) {
-            case 1:
-                return 'Janeiro de ' + hoje.getFullYear();
-            case 2:
-                return 'Fevereiro de ' + hoje.getFullYear();
-            case 3:
-                return 'Março de ' + hoje.getFullYear();
-            case 4:
-                return 'Abril de ' + hoje.getFullYear();
-            case 5:
-                return 'Maio de ' + hoje.getFullYear();
-            case 6:
-                return 'Junho de ' + hoje.getFullYear();
-            case 7:
-                return 'Julho de ' + hoje.getFullYear();
-            case 8:
-                return 'Agosto de ' + hoje.getFullYear();
-            case 9:
-                return 'Setembro de ' + hoje.getFullYear();
-            case 10:
-                return 'Outubro de ' + hoje.getFullYear();
-            case 11:
-                return 'Novembro de ' + hoje.getFullYear();
-            case 12:
-                return 'Dezembro de ' + hoje.getFullYear();
-            default:
-                return '';
-        }
-
-        // formattedDate = hoje.toISOString().slice(0, 10);
-        // return formattedDate;
-    }
-
-    public static getDiaMesAnoAtual(): string {
-        let hoje = new Date();
-        let year = hoje.getFullYear().toString();
-        let monthPreOp = hoje.getMonth() + 1;
-        let month = monthPreOp < 10 ? '0' + monthPreOp.toString() : monthPreOp.toString();
-        let day = hoje.getDate() < 10 ? '0' + hoje.getDate().toString() : hoje.getDate().toString();
-        return (year + '-' + month + '-' + day).toString();
-    }
-
-    public static getMesAtual(): string {
-        let hoje = new Date();
-        let monthPreOp = hoje.getMonth() + 1;
-        let month = monthPreOp < 10 ? '0' + monthPreOp.toString() : monthPreOp.toString();
-        return month;
-    }
-
-    public static getAnoAtual(): string {
-        let hoje = new Date();
-        let year = hoje.getFullYear().toString();
-        return year;
-    }
-
     public static getMesAnoAtual(): string {
         let hoje = new Date();
         let year = hoje.getFullYear().toString();
@@ -104,13 +42,6 @@ export class Util {
         let month = monthPreOp < 10 ? '0' + monthPreOp.toString() : monthPreOp.toString();
         let day = hoje.getDate() < 10 ? '0' + hoje.getDate().toString() : hoje.getDate().toString();
         return (year + '-' + month).toString();
-    }
-
-    public static formataDataDoTipoDateParaStringNoPadraoAmericano(data: Date): string {
-        const ano = data.getFullYear();
-        const mes = (data.getMonth() + 1).toString().padStart(2, '0');
-        const dia = data.getDate().toString().padStart(2, '0');
-        return `${ano}-${mes}-${dia}`;
     }
 
     public static obtemMesAnoPorExtenso(mesAno: string): string {
