@@ -10,17 +10,25 @@
             <hr class="divider">
         </div>
 
-        <div class="search-container">
-            <input type="text" placeholder="Pesquisar..." class="search-input">
-            <input type="month" placeholder="Mês e ano" class="date-input">
-            <select class="filter-select">
-                <option value="todos">Todos</option>
-                <option value="entradas">Entradas</option>
-                <option value="saidas">Saídas</option>
-            </select>
-            <button class="search-button" type="button">
-                <mat-icon>search</mat-icon>
-            </button>
+        <div class="menu">
+            <div class="actions-container">
+                <button class="add-button" type="button" [routerLink]="['/painel/transacao/cadastro']">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" placeholder="Pesquisar..." class="search-input">
+                <input type="month" placeholder="Mês e ano" class="date-input">
+                <select class="filter-select">
+                    <option value="todos">Todos</option>
+                    <option value="entradas">Entradas</option>
+                    <option value="saidas">Saídas</option>
+                </select>
+                <button class="search-button" type="button">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
         </div>
 
         <div class="table-container">

@@ -34,60 +34,92 @@ section {
             }
         }
 
-        .search-container {
-            @include mixins.centerContent();
-            margin-bottom: 1rem;
+        .menu {
             width: 100%;
-            gap: 1rem;
 
-            .search-input {
-                background-color: var(--input-background);
-                border: 1px solid var(--border-color);
-                @include mixins.fullSize();
-                color: var(--primary-text);
-                border-radius: 5px;
-                padding: 0.5rem;
-                font-size: 1rem;
-            }
+            .actions-container {
+                margin-bottom: 0.5rem;
 
-            .date-input {
-                background-color: var(--input-background);
-                border: 1px solid var(--border-color);
-                color: var(--primary-text);
-                border-radius: 5px;
-                padding: 0.4rem;
-                font-size: 1rem;
-            }
+                .add-button {
+                    background-color: var(--primary-color);
+                    @include mixins.notSelectableContent();
+                    @include mixins.centerContent();
 
-            .filter-select {
-                background-color: var(--input-background);
-                border: 1px solid var(--border-color);
-                color: var(--primary-text);
-                border-radius: 5px;
-                padding: 0.4rem;
-                font-size: 1rem;
-                height: 100%;
-            }
+                    mat-icon {
+                        color: var(--container-background);
+                        @include mixins.fullSize();
+                    }
 
-            .search-button {
-                background-color: var(--primary-color);
-                @include mixins.notSelectableContent();
-                @include mixins.centerContent();
+                    padding: 0.2rem 0.25rem;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
 
-                mat-icon {
-                    color: var(--container-background);
-                    @include mixins.fullSize();
+                    &:hover {
+                        background-color: var(--primary-color-hover);
+                        transition: 0.2s ease-in-out;
+                        color: --border-color;
+                    }
                 }
 
-                padding: 0.4rem 0.5rem;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
 
-                &:hover {
-                    background-color: var(--primary-color-hover);
-                    transition: 0.2s ease-in-out;
-                    color: --border-color;
+            }
+
+            .search-container {
+                @include mixins.centerContent();
+                margin-bottom: 1rem;
+                width: 100%;
+                gap: 1rem;
+
+                .search-input {
+                    background-color: var(--input-background);
+                    border: 1px solid var(--border-color);
+                    @include mixins.fullSize();
+                    color: var(--primary-text);
+                    border-radius: 5px;
+                    padding: 0.5rem;
+                    font-size: 1rem;
+                }
+
+                .date-input {
+                    background-color: var(--input-background);
+                    border: 1px solid var(--border-color);
+                    color: var(--primary-text);
+                    border-radius: 5px;
+                    padding: 0.4rem;
+                    font-size: 1rem;
+                }
+
+                .filter-select {
+                    background-color: var(--input-background);
+                    border: 1px solid var(--border-color);
+                    color: var(--primary-text);
+                    border-radius: 5px;
+                    padding: 0.4rem;
+                    font-size: 1rem;
+                    height: 100%;
+                }
+
+                .search-button {
+                    background-color: var(--primary-color);
+                    @include mixins.notSelectableContent();
+                    @include mixins.centerContent();
+
+                    mat-icon {
+                        color: var(--container-background);
+                        @include mixins.fullSize();
+                    }
+
+                    padding: 0.35rem 0.45rem;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--primary-color-hover);
+                        transition: 0.2s ease-in-out;
+                        color: --border-color;
+                    }
                 }
             }
         }
