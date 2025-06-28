@@ -45,4 +45,8 @@ export class ListagemViewAbstractionService {
   public implementaObtencaoDeFormulario(): FormGroup | undefined {
     return this.formService.formGroup;
   }
+
+  public implementaObtencaoDeDescricaoStatus(status: string): string {
+    return this.stateService.obtemDescricaoStatus(status);
+  }
 }

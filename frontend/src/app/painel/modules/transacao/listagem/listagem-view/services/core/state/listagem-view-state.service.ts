@@ -31,6 +31,19 @@ export class ListagemViewStateService {
     return this._pageResponse.content;
   }
 
+  public obtemDescricaoStatus(status: string): string {
+    switch (status) {
+      case 'PENDING':
+        return 'Pendente';
+      case 'COMPLETED':
+        return 'Concluído';
+      case 'CANCELED':
+        return 'Cancelado';
+      default:
+        return 'Desconhecido';
+    }
+  }
+
   public get pageResponse(): PageResponse<TransactionResponse[]> | undefined {
     return this._pageResponse;
   }

@@ -64,8 +64,10 @@
                             </span>
                         </td>
                         <td class="td">
-                            <span>
-                                {{ item.status }}
+                            <span class="status" [ngClass]="{'status-pending': item.status === 'PENDING', 
+                            'status-completed': item.status === 'COMPLETED', 
+                            'status-canceled': item.status === 'CANCELED'}">
+                                {{ obtemDescricaoStatus(item.status) }}
                             </span>
                         </td>
                         <td class="td td-actions">

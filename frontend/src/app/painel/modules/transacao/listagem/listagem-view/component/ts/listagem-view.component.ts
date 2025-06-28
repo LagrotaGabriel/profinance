@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TITLE_DESCRIPTION } from '../../../../../../../consts/Globals';
@@ -43,5 +42,9 @@ export class ListagemViewComponent {
 
   protected obtemFormularioBusca(): any {
     return this.abstractionService.implementaObtencaoDeFormulario();
+  }
+
+  protected obtemDescricaoStatus(status: string): string {
+    return this.abstractionService.implementaObtencaoDeDescricaoStatus(status);
   }
 }
