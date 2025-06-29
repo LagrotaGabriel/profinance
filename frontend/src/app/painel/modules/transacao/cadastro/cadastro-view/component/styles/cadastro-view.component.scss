@@ -12,6 +12,7 @@ section {
     border: 1px solid var(--border-color);
     @include mixins.fullSize();
     border-radius: 15px;
+    height: auto;
     padding: 2rem;
 
     .content {
