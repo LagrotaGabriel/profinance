@@ -1,0 +1,293 @@
+@use '../../../../../dist/themes.scss';
+@use '../../../../../dist/mixins';
+@use '../../../../../dist/reset.scss';
+
+::ng-deep {
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus,
+    select:-webkit-autofill:active {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: var(--txt-2) !important;
+        font-weight: 400;
+        transition: background-color 5000s ease-in-out 0s;
+        box-shadow: inset 0 0 0px 0px transparent;
+        display: none;
+    }
+
+    .mat-slide-toggle .mat-slide-toggle-thumb {
+        width: 13px !important;
+        height: 13px !important;
+        background-color: #24c368 !important;
+        box-shadow: none !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-65%, -57%);
+        border-radius: 3px
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+        background-color: #ececec !important;
+        width: 32px !important;
+        height: 16px !important;
+        border: 1px solid #24c368;
+        border-radius: 3px !important;
+    }
+
+    .mat-mdc-form-field {
+        width: 100%;
+        margin: 0.70rem 0;
+        padding: 0 0.5rem;
+    }
+
+    ::-webkit-input-placeholder {
+        color: var(--bg-3) !important;
+    }
+
+    mat-hint,
+    mat-error {
+        font-size: 0.7rem !important;
+    }
+
+    .mat-mdc-slide-toggle {
+        width: 100%;
+        margin: 0.70rem 0;
+        padding: 0 0.5rem;
+
+        .mdc-form-field {
+            display: flex;
+            align-items: baseline;
+        }
+
+        label {
+            padding-left: 0.7rem !important;
+            color: var(--txt-3);
+        }
+    }
+
+    .mat-mdc-form-field-hint {
+        color: var(--txt-3) !important;
+    }
+
+    .select-option-painel.mat-mdc-select-panel {
+        background: var(--bg-2);
+    }
+
+    .mat-mdc-option {
+        .mdc-list-item__primary-text {
+            color: var(--txt-3);
+
+            &:hover {
+                color: var(--txt-2);
+                transition: 0.1s;
+            }
+        }
+
+    }
+
+    .mdc-switch {
+        outline: none !important;
+    }
+
+    .mdc-text-field {
+
+        background-color: var(--bg-1-no-gradient);
+
+        .mat-mdc-select-arrow {
+            color: var(--txt-3) !important;
+        }
+
+        .mat-mdc-select-min-line {
+            color: var(--txt-2);
+        }
+
+        .mat-mdc-form-field-infix {
+            display: flex;
+            padding: 1rem 0 !important;
+        }
+
+        mat-label {
+            color: var(--txt-1);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .mat-mdc-form-field-required-marker {
+            color: var(--txt-1);
+            font-weight: 500;
+        }
+
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+            border-color: var(--bg-3) !important;
+        }
+
+        .mdc-notched-outline__notch {
+            padding: 0 !important;
+            margin: 0 auto;
+            border-top: none;
+            border-left: none !important;
+            border-right: none;
+        }
+
+        .mat-icon {
+            font-size: 1.4rem;
+            width: 100%;
+            height: 100%;
+            color: var(--txt-1);
+        }
+
+        input {
+            font-size: 1rem !important;
+            color: var(--txt-2) !important;
+        }
+
+        &--focused {
+
+            .mat-mdc-select-arrow {
+                color: var(--txt-1) !important;
+            }
+
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: var(--txt-1) !important;
+            }
+        }
+
+        &--invalid {
+
+            .mat-mdc-select-arrow {
+                color: var(--status-error-color) !important;
+            }
+
+            mat-label {
+                color: var(--status-error-color);
+            }
+
+            .mat-mdc-form-field-required-marker {
+                color: var(--status-error-color);
+            }
+
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: var(--status-error-color) !important;
+            }
+
+            .mat-icon {
+                color: var(--status-error-color);
+            }
+
+            input {
+                caret-color: var(--status-error-color) !important
+            }
+
+        }
+
+        &--disabled {
+            .mat-mdc-select-arrow {
+                color: var(--bg-3) !important;
+            }
+
+            mat-label {
+                color: var(--bg-3);
+            }
+
+            .mat-mdc-form-field-required-marker {
+                color: var(--bg-3);
+            }
+
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__notch,
+            .mdc-notched-outline__trailing {
+                border-color: var(--bg-3) !important;
+            }
+
+            .mat-icon {
+                color: var(--bg-3);
+            }
+
+            .mat-mdc-select-min-line {
+                color: var(--bg-3);
+            }
+        }
+
+        .mat-mdc-select-placeholder {
+            color: var(--bg-3) !important;
+        }
+
+    }
+
+}
+
+// RESPONSIVIDADE DO INPUT BÁSICO
+@media (max-width: 630px) {
+    ::ng-deep {
+        .mdc-text-field {
+            .mat-mdc-form-field-infix {
+                padding: 1.2rem 0 !important;
+            }
+
+            mat-label {
+                font-size: 1.1rem;
+            }
+
+            .mat-icon {
+                font-size: 1.7rem;
+            }
+
+            input {
+                font-size: 1.1rem !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    ::ng-deep {
+        .mdc-text-field {
+            .mat-mdc-form-field-infix {
+                padding: 1.1rem 0 !important;
+            }
+
+            .mat-icon {
+                font-size: 1.6rem;
+            }
+
+            input {
+                font-size: 1rem !important;
+            }
+        }
+
+        mat-hint,
+        mat-error {
+            font-size: 0.7rem !important;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    ::ng-deep {
+        .mdc-text-field {
+            .mat-mdc-form-field-infix {
+                padding: 1rem 0 !important;
+            }
+
+            .mat-icon {
+                font-size: 1.5rem;
+            }
+
+            input {
+                font-size: 0.9rem !important;
+            }
+        }
+    }
+}

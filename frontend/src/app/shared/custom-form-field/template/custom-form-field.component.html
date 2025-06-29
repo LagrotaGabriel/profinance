@@ -1,0 +1,47 @@
+<div class="input-wrap" [ngSwitch]="formFieldDetails.type">
+
+    <!-- INPUT TEXT -->
+    <mat-form-field appearance="outline" [hintLabel]="hint != null ? hint : ''" [floatLabel]="'always'"
+        *ngSwitchCase="'text'" [color]="'primary'">
+        <mat-label [matTooltip]="formFieldDetails.toolTip != null ? formFieldDetails.toolTip : ''">
+            {{label}}
+        </mat-label>
+        <input [id]="id" #input matInput [tabindex]="index" [attr.maxlength]="maxLength" [value]="value ? value : null"
+            spellcheck="false" autocomplete="off" [type]="type ? type: 'text'" [(ngModel)]="value"
+            [errorStateMatcher]="errorMatcher()" (blur)="onTouchCb($event)"
+            [disabled]="formFieldDetails.control.disabled" [required]="isRequired">
+        <mat-error>{{ geraMensagemErro() }}</mat-error>
+        <mat-icon matSuffix>{{ icone }}</mat-icon>
+        <mat-hint align="end">{{input.value.length + '/' + maxLength}}</mat-hint>
+    </mat-form-field>
+
+    <!-- INPUT DATE -->
+    <mat-form-field appearance="outline" [hintLabel]="hint != null ? hint : ''" [floatLabel]="'always'"
+        *ngSwitchCase="'date'" [color]="'primary'">
+        <mat-label [matTooltip]="formFieldDetails.toolTip != null ? formFieldDetails.toolTip : ''">
+            {{label}}
+        </mat-label>
+        <input [id]="id" #input matInput [tabindex]="index" [attr.maxlength]="maxLength" [value]="value ? value : null"
+            spellcheck="false" autocomplete="off" [type]="type ? type: 'text'" [(ngModel)]="value"
+            [errorStateMatcher]="errorMatcher()" (blur)="onTouchCb($event)"
+            [disabled]="formFieldDetails.control.disabled" [required]="isRequired">
+        <mat-error>{{ geraMensagemErro() }}</mat-error>
+        <mat-icon matSuffix>{{ icone }}</mat-icon>
+    </mat-form-field>
+
+    <!-- INPUT SELECT -->
+    <mat-form-field appearance="outline" [hintLabel]="hint != null ? hint : ''" [floatLabel]="'always'"
+        *ngSwitchCase="'select'" [color]="'primary'">
+        <mat-label [matTooltip]="formFieldDetails.toolTip != null ? formFieldDetails.toolTip : ''">
+            {{label}}
+        </mat-label>
+        <mat-select [id]="id" #input [tabindex]="index" [errorStateMatcher]="errorMatcher()" [(ngModel)]="value"
+            (blur)="onTouchCb($event)" (change)="onChangeCb($event)" panelClass="select-option-painel"
+            [disabled]="formFieldDetails.control.disabled" [required]="isRequired">
+            <mat-option *ngFor="let option of formFieldDetails.selectOption"
+                [value]="option.value">{{option.text}}</mat-option>
+        </mat-select>
+        <mat-error>{{ geraMensagemErro() }}</mat-error>
+        <mat-icon matSuffix>{{ icone }}</mat-icon>
+    </mat-form-field>
+</div>
