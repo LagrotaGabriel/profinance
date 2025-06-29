@@ -1,5 +1,8 @@
 export class Util {
 
+    public static monetaryRegex: any = /^(?:0|0\.\d{1,2}|(?:[1-9]\d{0,6}(?:\.\d{1,2})?))$/;
+    public static dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
     public static isObjectEmpty(object: any): boolean {
         if (object == null || object == undefined) return true;
         return false;
@@ -100,4 +103,10 @@ export class Util {
         return mesAno;
     }
 
+    public static formataDataDoTipoDateParaStringNoPadraoAmericano(data: Date): string {
+        const ano = data.getFullYear();
+        const mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        const dia = data.getDate().toString().padStart(2, '0');
+        return `${ano}-${mes}-${dia}`;
+    }
 }
