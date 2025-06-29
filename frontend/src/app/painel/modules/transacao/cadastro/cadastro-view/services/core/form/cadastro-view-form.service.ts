@@ -94,14 +94,14 @@ export class CadastroViewFormService {
   }
 
   public realizaTratamentoDeFormularioAposAlteracaoNoCampoValor() {
-    let valor: string = this.getFormValueValores('valor');
+    let valor: string = this.getFormValueValores('value');
 
     if (Util.isEmptyString(valor)) return;
 
-    this.setFormValueValores('valor', valor.replace(/[^0-9.,]/g, ''));
+    this.setFormValueValores('value', valor.replace(/[^0-9.,]/g, ''));
 
     if (valor.includes(',')) {
-      this.setFormValueValores('valor', valor.replace(',', '.'));
+      this.setFormValueValores('value', valor.replace(',', '.'));
     }
   }
 
