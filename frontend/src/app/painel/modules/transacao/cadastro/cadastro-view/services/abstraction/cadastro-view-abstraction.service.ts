@@ -48,6 +48,10 @@ export class CadastroViewAbstractionService {
         this.formService.realizaTratamentoDeFormularioAposAlteracaoNoCampoValor();
         break;
       }
+      case ('status'): {
+        this.formService.realizaTratamentoDeFormularioAposAlteracaoNoCampoStatus();
+        break;
+      }
       default: break;
     }
   }

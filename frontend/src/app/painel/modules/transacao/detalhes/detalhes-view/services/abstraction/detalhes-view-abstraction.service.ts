@@ -50,6 +50,10 @@ export class DetalhesViewAbstractionService {
         this.formService.realizaTratamentoDeFormularioAposAlteracaoNoCampoValor();
         break;
       }
+      case ('status'): {
+        this.formService.realizaTratamentoDeFormularioAposAlteracaoNoCampoStatus();
+        break;
+      }
       default: break;
     }
   }

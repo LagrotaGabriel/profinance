@@ -105,9 +105,29 @@ export class CadastroViewFormService {
     }
   }
 
+  public realizaTratamentoDeFormularioAposAlteracaoNoCampoStatus() {
+
+    let status: string = this.getFormValueValores('status');
+
+    if (Util.isEmptyString(status)) return;
+
+    switch (status) {
+      case 'PENDING':
+        this.setFormValueValores('executionDate', null);
+        this.formGroupValores.controls['executionDate'].disable();
+        break;
+      case 'COMPLETED':
+        this.setFormValueValores('executionDate', Util.formataDataDoTipoDateParaStringNoPadraoAmericano(new Date()));
+        this.formGroupValores.controls['executionDate'].enable();
+        break;
+      default:
+        break;
+    }
+  }
+
   public verificaSeFormularioEstaValidoParaSerEnviado(): boolean {
 
-    if (this.formGroupValores.invalid)return false;
+    if (this.formGroupValores.invalid) return false;
 
     return true;
   }
