@@ -29,7 +29,7 @@ public class FindPageableCategoriesUseCase {
         Page<TransactionCategory> categoryEntityPage =
                 categoryRepositoryPort.findPageableCategory(
                         pageable,
-                        name.isEmpty() ? null : name.toUpperCase(),
+                        name == null ? null : name.toUpperCase(),
                         type
                 );
 
