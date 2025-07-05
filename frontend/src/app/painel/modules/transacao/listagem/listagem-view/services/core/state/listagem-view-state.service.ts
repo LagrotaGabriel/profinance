@@ -12,6 +12,7 @@ export class ListagemViewStateService {
 
   private _pageResponse: PageResponse<TransactionResponse[]> | undefined;
   private _obtemListagemPaginadaSubscription$: Subscription | undefined;
+  private _deletaTransacaoSubscription$: Subscription | undefined;
 
   public destroiService() {
     this.destroiSubscriptions();
@@ -24,6 +25,7 @@ export class ListagemViewStateService {
 
   private destroiSubscriptions() {
     if (this.obtemListagemPaginadaSubscription != undefined) this.obtemListagemPaginadaSubscription.unsubscribe();
+    if (this.deletaTransacaoSubscription != undefined) this.deletaTransacaoSubscription.unsubscribe();
   }
 
   public obtemConteudoPageResponse(): TransactionResponse[] {
@@ -58,5 +60,13 @@ export class ListagemViewStateService {
 
   public set obtemListagemPaginadaSubscription(value: Subscription | undefined) {
     this._obtemListagemPaginadaSubscription$ = value;
+  }
+
+  public get deletaTransacaoSubscription(): Subscription | undefined {
+    return this._deletaTransacaoSubscription$;
+  }
+
+  public set deletaTransacaoSubscription(value: Subscription | undefined) {
+    this._deletaTransacaoSubscription$ = value;
   }
 }

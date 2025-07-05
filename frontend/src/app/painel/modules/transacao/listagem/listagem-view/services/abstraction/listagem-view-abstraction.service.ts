@@ -49,4 +49,13 @@ export class ListagemViewAbstractionService {
   public implementaObtencaoDeDescricaoStatus(status: string): string {
     return this.stateService.obtemDescricaoStatus(status);
   }
+
+  public implementaDeletarTransacao(id: string): void {
+
+    this.stateService.deletaTransacaoSubscription =
+      this.apiService.realizaRequisicaoDeDelecaoDeTransacao(
+        id,
+        this
+      );
+  }
 }

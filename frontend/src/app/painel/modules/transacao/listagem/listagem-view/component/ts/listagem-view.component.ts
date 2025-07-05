@@ -47,4 +47,8 @@ export class ListagemViewComponent {
   protected obtemDescricaoStatus(status: string): string {
     return this.abstractionService.implementaObtencaoDeDescricaoStatus(status);
   }
+
+  protected deletarTransacao(id: string): void {
+    this.abstractionService.implementaDeletarTransacao(id);
+  }
 }

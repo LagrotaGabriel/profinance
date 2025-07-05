@@ -39,6 +39,13 @@ export class ListagemViewHttpService {
     );
   }
 
+  public deletaTransacao(id: string): Observable<void> {
+    return this.http.delete<void>(
+      `${API_CONFIG.baseUrl}/${API_CONFIG.apiPrefix}/transaction/${id}`,
+      this.httpOptions
+    );
+  }
+
   private buildRequestParams(
     pagina: number,
     valorPesquisa: string,

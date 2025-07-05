@@ -72,10 +72,10 @@
                         </td>
                         <td class="td td-actions">
                             <button>
-                                <mat-icon>edit</mat-icon>
+                                <mat-icon [routerLink]="['/painel/transacao', item.id]">edit</mat-icon>
                             </button>
                             <button>
-                                <mat-icon>delete</mat-icon>
+                                <mat-icon (click)="deletarTransacao(item.id)">delete</mat-icon>
                             </button>
                         </td>
                     </tr>
