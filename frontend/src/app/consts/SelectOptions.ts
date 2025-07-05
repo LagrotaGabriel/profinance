@@ -13,3 +13,14 @@ export const STATUS_TRANSACAO: SelectOptions[] = [
         value: 'COMPLETED'
     }
 ]
+
+export const TIPO_CATEGORIA: SelectOptions[] = [
+    {
+        text: 'Entrada',
+        value: 'INPUT'
+    },
+    {
+        text: 'Saída',
+        value: 'OUTPUT'
+    }
+]
