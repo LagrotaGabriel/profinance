@@ -4,6 +4,7 @@ import { STATUS_TRANSACAO } from '../../../../../../../../consts/SelectOptions';
 import { FormFieldDetails } from '../../../../../../../../shared/custom-form-field/models/FormFieldDetails';
 import { CategoryResponse } from '../../../../../../categoria/models/response/CategoryResponse';
 import { TransactionRequest } from '../../../../../../models/TransactionRequest';
+import { TransactionResponse } from '../../../../../listagem/models/TransactionResponse';
 import { DetalhesViewFormService } from '../form/detalhes-view-form.service';
 
 @Injectable({
@@ -13,10 +14,12 @@ export class DetalhesViewStateService {
 
   private _enviaRequisicaoDeAtualizacaoSubscription$: Subscription | undefined;
   private _enviaRequisicaoDeObtencaoDeCategoriasSubscription$: Subscription | undefined;
+  private _enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription$: Subscription | undefined;
 
   private _camposFormularioValores!: FormFieldDetails[];
 
   private _transacaoRequest: TransactionRequest | null = null;
+  private _transacaoEncontrada: TransactionResponse | null = null;
 
   private _categoriasEncontradas: CategoryResponse[] = [];
 
@@ -32,11 +35,13 @@ export class DetalhesViewStateService {
   private destroiSubscriptions() {
     if (this.enviaRequisicaoDeAtualizacaoSubscription != undefined) this.enviaRequisicaoDeAtualizacaoSubscription.unsubscribe();
     if (this.enviaRequisicaoDeObtencaoDeCategoriasSubscription != undefined) this.enviaRequisicaoDeObtencaoDeCategoriasSubscription.unsubscribe();
+    if (this.enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription != undefined) this.enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription.unsubscribe();
   }
 
   private resetaVariaveis() {
     this.camposFormularioValores = [];
     this.transacaoRequest = null;
+    this.transacaoEncontrada = null;
     this.categoriasEncontradas = [];
   }
 
@@ -173,12 +178,28 @@ export class DetalhesViewStateService {
     this._enviaRequisicaoDeObtencaoDeCategoriasSubscription$ = subscription;
   }
 
+  get enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription(): Subscription | undefined {
+    return this._enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription$;
+  }
+
+  set enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription(subscription: Subscription | undefined) {
+    this._enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription$ = subscription;
+  }
+
   get transacaoRequest(): TransactionRequest | null {
     return this._transacaoRequest;
   }
 
   set transacaoRequest(transacaoRequest: TransactionRequest | null) {
     this._transacaoRequest = transacaoRequest;
+  }
+
+  get transacaoEncontrada(): TransactionResponse | null {
+    return this._transacaoEncontrada;
+  }
+
+  set transacaoEncontrada(transacaoEncontrada: TransactionResponse | null) {
+    this._transacaoEncontrada = transacaoEncontrada;
   }
 
   get categoriasEncontradas(): CategoryResponse[] {

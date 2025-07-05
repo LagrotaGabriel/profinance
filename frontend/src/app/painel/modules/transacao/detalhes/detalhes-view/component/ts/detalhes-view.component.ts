@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { TITLE_DESCRIPTION } from '../../../../../../../consts/Globals';
 import { StatusProcessamento } from '../../../../../../../models/StatusProcessamento';
 import { FormFieldDetails } from '../../../../../../../shared/custom-form-field/models/FormFieldDetails';
@@ -16,12 +17,13 @@ export class DetalhesViewComponent {
   constructor(
     private titleService: Title,
     private ref: ChangeDetectorRef,
+    private activatedRoute: ActivatedRoute,
     public abstractionService: DetalhesViewAbstractionService
   ) { }
 
   ngAfterViewInit(): void {
     this.titleService.setTitle(`${TITLE_DESCRIPTION} Detalhes da transação`);
-    this.abstractionService.implementaInicializacaoDeComponente(this.ref);
+    this.abstractionService.implementaInicializacaoDeComponente(this.activatedRoute, this.ref);
     this.ref.detectChanges();
   }
 
@@ -54,6 +56,6 @@ export class DetalhesViewComponent {
   }
 
   protected enviaFormularioCriacao() {
-    this.abstractionService.implementaEnvioDoFormulario();
+    this.abstractionService.implementaEnvioDoFormulario(this.activatedRoute);
   }
 }

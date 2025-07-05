@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { StatusProcessamento } from '../../../../../../../models/StatusProcessamento';
 import { FormFieldDetails } from '../../../../../../../shared/custom-form-field/models/FormFieldDetails';
 import { DetalhesViewApiService } from '../core/api/detalhes-view-api.service';
@@ -19,10 +20,11 @@ export class DetalhesViewAbstractionService {
     private apiService: DetalhesViewApiService
   ) { }
 
-  public implementaInicializacaoDeComponente(ref: ChangeDetectorRef) {
+  public implementaInicializacaoDeComponente(activatedRoute: ActivatedRoute, ref: ChangeDetectorRef) {
     this.formService.iniciaService();
     this.stateService.iniciaService(ref, this.formService);
     this.implementaObtencaoDeCategorias();
+    this.implementaObtencaoDeTransacaoPorId(activatedRoute);
   }
 
   public implementaDestruicaoDeComponente() {
@@ -68,16 +70,46 @@ export class DetalhesViewAbstractionService {
       );
   }
 
-  public implementaEnvioDoFormulario() {
-    if (this.formService.verificaSeFormularioEstaValidoParaSerEnviado()) {
-      // this.stateService.geraObjetoRequestAPartirDosDadosDoFormulario(this.formService);
-      // this.stateService.enviaRequisicaoDeAtualizacaoSubscription =
-      //   this.apiService.seInscreveEmObservableDeAtualizacaoDeTransacao(
-      //     this.matSnackBar,
-      //     // TODO OBTENCAO DO ID DA TRANSAÇÃO
-      //     this.stateService.transacaoRequest,
-      //     this.formService
-      //   );
+  public implementaEnvioDoFormulario(activatedRoute: ActivatedRoute) {
+
+    const idTransacao: any = activatedRoute.snapshot.paramMap.get('id');
+
+    if (!idTransacao) {
+      this.matSnackBar.open("ID da transação não encontrado", "Fechar", {
+        duration: 3500
+      });
+      return;
     }
+
+    if (this.formService.verificaSeFormularioEstaValidoParaSerEnviado()) {
+      this.stateService.geraObjetoRequestAPartirDosDadosDoFormulario(this.formService);
+      this.stateService.enviaRequisicaoDeAtualizacaoSubscription =
+        this.apiService.seInscreveEmObservableDeAtualizacaoDeTransacao(
+          this.matSnackBar,
+          idTransacao,
+          this.stateService.transacaoRequest,
+          this.formService
+        );
+    }
+  }
+
+  public implementaObtencaoDeTransacaoPorId(activatedRoute: ActivatedRoute) {
+
+    const idTransacao: any = activatedRoute.snapshot.paramMap.get('id');
+
+    if (!idTransacao) {
+      this.matSnackBar.open("ID da transação não encontrado", "Fechar", {
+        duration: 3500
+      });
+      return;
+    }
+
+    this.stateService.enviaRequisicaoDeObtencaoDeTransacaoPorIdSubscription =
+      this.apiService.seInscreveEmObservableDeObtencaoDeTransacaoPorId(
+        this.matSnackBar,
+        idTransacao,
+        this.stateService,
+        this.formService
+      );
   }
 }

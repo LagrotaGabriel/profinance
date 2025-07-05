@@ -7,6 +7,7 @@ import { PageResponse } from '../../../../../../../../models/PageResponse';
 import { StatusProcessamento } from '../../../../../../../../models/StatusProcessamento';
 import { CategoryResponse } from '../../../../../../categoria/models/response/CategoryResponse';
 import { TransactionRequest } from '../../../../../../models/TransactionRequest';
+import { TransactionResponse } from '../../../../../listagem/models/TransactionResponse';
 import { DetalhesViewFormService } from '../form/detalhes-view-form.service';
 import { DetalhesViewStateService } from '../state/detalhes-view-state.service';
 import { DetalhesViewHttpService } from './http/detalhes-view-http.service';
@@ -94,6 +95,35 @@ export class DetalhesViewApiService {
           });
 
           stateService.categoriasEncontradas = [];
+        }
+      }
+    );
+  }
+
+  public seInscreveEmObservableDeObtencaoDeTransacaoPorId(
+    matSnackBar: MatSnackBar,
+    idTransacao: string,
+    stateService: DetalhesViewStateService,
+    formService: DetalhesViewFormService): Subscription {
+
+    formService.formStatusValores = StatusProcessamento.PROCESSANDO;
+
+    return this.httpService.obtemTransacaoPorId(idTransacao).subscribe(
+      {
+        next: (response: TransactionResponse) => {
+          formService.formGroupValores.patchValue(response);
+          stateService.transacaoEncontrada = response;
+        },
+        complete: () => {
+          formService.formStatusValores = StatusProcessamento.ABERTO;
+        },
+        error: () => {
+          matSnackBar.open("Erro ao obter transação", "Fechar", {
+            duration: 3500
+          });
+
+          formService.formStatusValores = StatusProcessamento.ABERTO;
+          this.router.navigate(['/painel/transacao/listagem']);
         }
       }
     );
