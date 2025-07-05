@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CadastroModule } from './cadastro/cadastro.module';
+import { DetalhesModule } from './detalhes/detalhes.module';
 import { ListagemModule } from './listagem/listagem.module';
 
 
@@ -10,7 +11,8 @@ import { ListagemModule } from './listagem/listagem.module';
   imports: [
     CommonModule,
     ListagemModule,
-    CadastroModule
+    CadastroModule,
+    DetalhesModule
   ]
 })
 export class TransacaoModule { }

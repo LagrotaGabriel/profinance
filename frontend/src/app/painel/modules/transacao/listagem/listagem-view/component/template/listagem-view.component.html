@@ -71,11 +71,11 @@
                             </span>
                         </td>
                         <td class="td td-actions">
-                            <button>
-                                <mat-icon [routerLink]="['/painel/transacao', item.id]">edit</mat-icon>
+                            <button (click)="redirecionarParaTransacao(item.id)">
+                                <mat-icon>edit</mat-icon>
                             </button>
-                            <button>
-                                <mat-icon (click)="deletarTransacao(item.id)">delete</mat-icon>
+                            <button (click)="deletarTransacao(item.id)">
+                                <mat-icon>delete</mat-icon>
                             </button>
                         </td>
                     </tr>

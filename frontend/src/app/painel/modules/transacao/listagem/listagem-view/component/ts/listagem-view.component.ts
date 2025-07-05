@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TITLE_DESCRIPTION } from '../../../../../../../consts/Globals';
 import { PageResponse } from '../../../../../../../models/PageResponse';
 import { TransactionResponse } from '../../../models/TransactionResponse';
@@ -14,10 +14,11 @@ import { ListagemViewAbstractionService } from '../../services/abstraction/lista
 export class ListagemViewComponent {
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private titleService: Title,
-    private abstractionService: ListagemViewAbstractionService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private activatedRoute: ActivatedRoute,
+    private abstractionService: ListagemViewAbstractionService
   ) {
     this.abstractionService.implementaInicializacaoDeComponente(this.activatedRoute);
   }
@@ -50,5 +51,10 @@ export class ListagemViewComponent {
 
   protected deletarTransacao(id: string): void {
     this.abstractionService.implementaDeletarTransacao(id);
+  }
+
+  protected redirecionarParaTransacao(id: string): void {
+    this.router.navigate(['/painel/transacao', id]);
+    this.ref.detectChanges();
   }
 }
