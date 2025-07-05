@@ -1,3 +1,4 @@
+// TODO MIGRAR PARA OUTRO DIRETÓRIO MAIS APROPRIADO
 export interface TransactionRequest {
     description: string;
     value: number;
