@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { STATUS_CRIACAO_TRANSACAO } from '../../../../../../../../consts/SelectOptions';
+import { STATUS_TRANSACAO } from '../../../../../../../../consts/SelectOptions';
 import { FormFieldDetails } from '../../../../../../../../shared/custom-form-field/models/FormFieldDetails';
-import { CategoryResponse } from '../../../models/CategoryResponse';
-import { TransactionRequest } from '../../../models/TransactionRequest';
+import { CategoryResponse } from '../../../../../../models/CategoryResponse';
+import { TransactionRequest } from '../../../../../../models/TransactionRequest';
 import { CadastroViewFormService } from '../form/cadastro-view-form.service';
 
 @Injectable({
@@ -110,7 +110,7 @@ export class CadastroViewStateService {
           label: 'Status',
           hint: 'Status da transação',
           placeHolder: 'Digite aqui...',
-          selectOption: STATUS_CRIACAO_TRANSACAO,
+          selectOption: STATUS_TRANSACAO,
           formControlName: 'status',
           control: formService.formGroupValores.controls['status']
         },

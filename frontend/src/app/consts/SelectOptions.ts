@@ -3,7 +3,7 @@ export interface SelectOptions {
     value: string;
 }
 
-export const STATUS_CRIACAO_TRANSACAO: SelectOptions[] = [
+export const STATUS_TRANSACAO: SelectOptions[] = [
     {
         text: 'Pendente',
         value: 'PENDING'
