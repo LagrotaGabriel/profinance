@@ -1,9 +1,52 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { PageResponse } from '../../../../../../../models/PageResponse';
+import { CategoryResponse } from '../../../../../models/CategoryResponse';
+import { ListagemViewApiService } from '../core/api/listagem-view-api.service';
+import { ListagemViewFormService } from '../core/form/listagem-view-form.service';
+import { ListagemViewStateService } from '../core/state/listagem-view-state.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListagemViewAbstractionService {
 
-  constructor() { }
+  constructor(
+    private formService: ListagemViewFormService,
+    private stateService: ListagemViewStateService,
+    private apiService: ListagemViewApiService
+  ) { }
+
+  public implementaInicializacaoDeComponente(activatedRoute: ActivatedRoute) {
+    this.formService.iniciaService(activatedRoute, this);
+  }
+
+  public implementaDestruicaoDeComponente() {
+    this.stateService.destroiService();
+  }
+
+  public implementaInvocacaoDeRequisicaoDeObtencaoDeItensPaginados() {
+    this.stateService.obtemListagemPaginadaSubscription =
+      this.apiService.realizaRequisicaoDeObtencaoDeObjetosPaginados(
+        this.stateService,
+        this.formService
+      );
+  }
+
+  public implementaObtencaoDeConteudo(): CategoryResponse[] {
+    return this.stateService.obtemConteudoPageResponse();
+  }
+
+  public implementaObtencaoDePageResponse(): PageResponse<CategoryResponse[]> | undefined {
+    return this.stateService.pageResponse;
+  }
+
+  public implementaObtencaoDeFormulario(): FormGroup | undefined {
+    return this.formService.formGroup;
+  }
+
+  public implementaObtencaoDeDescricaoTipo(tipo: string): string {
+    return this.stateService.obtemDescricaoTipo(tipo);
+  }
 }
