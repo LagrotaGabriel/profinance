@@ -1,1 +1,38 @@
-<p>detalhes-view works!</p>
+<section>
+    <div class="row content">
+
+        <div class="row title-container">
+            <h1 class="title">NOME DA TRANSAÇÃO</h1>
+            <h3 class="subtitle">Abaixo é possível visualizar e alterar os detalhes da transação</h3>
+        </div>
+
+        <div class="hr-container">
+            <hr class="divider">
+        </div>
+
+        <form *ngIf="obtemFormulario()" [formGroup]="obtemFormulario()" (submit)="enviaFormularioCriacao()"
+            class="row form">
+            <custom-form-field-group *ngFor="let formFieldDetails of obtemCamposFormulario()"
+                [class]="formFieldDetails.bootstrapColClass" [formControlName]="formFieldDetails.formControlName"
+                [formFieldDetails]="formFieldDetails"
+                [isRequired]="verificaSeControlEhRequired(formFieldDetails.formControlName)"
+                (input)="direcionaParaTratamentoDoCampoCorreto(formFieldDetails.id)"
+                (ngModelChange)="formFieldDetails.type == 'select' ? direcionaParaTratamentoDoCampoCorreto(formFieldDetails.id) : null" />
+
+            <div *ngIf="obtemFormulario()" class="botao-container">
+                <button class="botao" [disabled]="!isFormularioValidoParaEnvio()"
+                    [ngClass]="{'botao-desabilitado': !isFormularioValidoParaEnvio()}" type="submit">
+                    <span *ngIf="implementaObtencaoDeStatusDeEnvioDeFormulario() == 1; else: loader">
+                        Enviar
+                    </span>
+                    <ng-template #loader>
+                        <div class="spinner-container">
+                            <mat-spinner class="spinner"></mat-spinner>
+                        </div>
+                    </ng-template>
+                </button>
+            </div>
+        </form>
+
+    </div>
+</section>
