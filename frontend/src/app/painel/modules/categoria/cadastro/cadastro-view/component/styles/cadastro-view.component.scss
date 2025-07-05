@@ -1,0 +1,160 @@
+@use '../../../../../../../../../dist/themes.scss';
+@use '../../../../../../../../../dist/mixins.scss';
+
+:host {
+    ::ng-deep mat-form-field {
+        padding: 0;
+    }
+}
+
+section {
+    background-color: var(--container-background);
+    border: 1px solid var(--border-color);
+    @include mixins.fullSize();
+    border-radius: 15px;
+    height: auto;
+    padding: 2rem;
+
+    .content {
+        @include mixins.centerContent();
+
+        .title-container {
+
+            .title {
+                @include mixins.title();
+            }
+
+            .subtitle {
+                @include mixins.subtitle();
+            }
+        }
+
+        .hr-container {
+            @include mixins.centerContent();
+            margin-top: -0.5rem;
+
+            .divider {
+                background-color: var(--divider-color);
+                margin: 1rem 0;
+                height: 1px;
+                width: 100%;
+            }
+        }
+
+        .form {
+            width: 100%;
+            padding: 0;
+
+            .botao-container {
+                width: 100%;
+                margin: 0.5rem 0;
+                padding: 0 0.5rem;
+                @include mixins.centerContent();
+
+                .botao {
+                    cursor: pointer;
+                    width: 100%;
+                    border: none;
+                    font-size: 1.1rem;
+                    border-radius: 8px;
+                    color: var(--primary-text);
+                    padding: 1rem 1rem;
+                    font-weight: 500;
+                    border: 1px solid var(--border-color);
+                    background-color: var(--primary-color);
+
+                    &:focus {
+                        outline: none;
+                        transition: 0.2s;
+                        background-color: var(--primary-color-hover);
+                    }
+
+                    &:hover {
+                        transition: 0.3s;
+                        color: var(--primary-text-hover);
+                    }
+
+                    &-desabilitado {
+                        cursor: auto;
+                        color: var(--secundary-text);
+                        border: 1px solid var(--border-color);
+                        background-color: var(--border-color);
+
+                        &:hover {
+                            color: var(--secundary-text);
+                        }
+
+                        &:focus {
+                            outline: none;
+                            transition: 0.2s;
+                            background-color: var(--border-color);
+                        }
+                    }
+
+                    .spinner-container {
+                        @include mixins.fullSize();
+                        @include mixins.centerContent();
+
+                        ::ng-deep {
+                            .spinner {
+                                width: 1.3rem !important;
+                                height: 1.3rem !important;
+
+                                circle {
+                                    stroke: var(--secundary-color);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+    :host ::ng-deep mat-form-field {
+        padding: 0;
+    }
+
+    section {
+        .content {
+            .form {
+
+                .container-icone-busca {
+                    padding: 0;
+                }
+
+                .botao-container {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .form {
+        .botao-container {
+            .botao {
+                padding: 0.75rem;
+            }
+        }
+    }
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(0.97);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.97);
+    }
+}

@@ -7,6 +7,10 @@ const routes: Routes = [
         loadChildren: () => import('./listagem/listagem.routes.js').then(m => m.ListagemRoutingModule)
     },
     {
+        path: 'cadastro',
+        loadChildren: () => import('./cadastro/cadastro.routes.js').then(m => m.CadastroRoutingModule)
+    },
+    {
         path: '**',
         redirectTo: 'listagem'
     }
