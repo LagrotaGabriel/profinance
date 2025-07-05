@@ -12,6 +12,7 @@ import { CadastroViewFormService } from '../form/cadastro-view-form.service';
 export class CadastroViewStateService {
 
   private _enviaRequisicaoDeCriacaoSubscription$: Subscription | undefined;
+  private _enviaRequisicaoDeObtencaoDeCategoriasSubscription$: Subscription | undefined;
 
   private _camposFormularioValores!: FormFieldDetails[];
 
@@ -30,6 +31,7 @@ export class CadastroViewStateService {
 
   private destroiSubscriptions() {
     if (this.enviaRequisicaoDeCriacaoSubscription != undefined) this.enviaRequisicaoDeCriacaoSubscription.unsubscribe();
+    if (this.enviaRequisicaoDeObtencaoDeCategoriasSubscription != undefined) this.enviaRequisicaoDeObtencaoDeCategoriasSubscription.unsubscribe();
   }
 
   private resetaVariaveis() {
@@ -161,6 +163,14 @@ export class CadastroViewStateService {
 
   set enviaRequisicaoDeCriacaoSubscription(subscription: Subscription | undefined) {
     this._enviaRequisicaoDeCriacaoSubscription$ = subscription;
+  }
+
+  get enviaRequisicaoDeObtencaoDeCategoriasSubscription(): Subscription | undefined {
+    return this._enviaRequisicaoDeObtencaoDeCategoriasSubscription$;
+  }
+
+  set enviaRequisicaoDeObtencaoDeCategoriasSubscription(subscription: Subscription | undefined) {
+    this._enviaRequisicaoDeObtencaoDeCategoriasSubscription$ = subscription;
   }
 
   get transacaoRequest(): TransactionRequest | null {

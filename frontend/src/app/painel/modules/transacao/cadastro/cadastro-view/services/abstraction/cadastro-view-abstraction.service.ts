@@ -22,6 +22,7 @@ export class CadastroViewAbstractionService {
   public implementaInicializacaoDeComponente(ref: ChangeDetectorRef) {
     this.formService.iniciaService();
     this.stateService.iniciaService(ref, this.formService);
+    this.implementaObtencaoDeCategorias();
   }
 
   public implementaDestruicaoDeComponente() {
@@ -56,6 +57,15 @@ export class CadastroViewAbstractionService {
     if (this.formService.verificaSeFormularioEstaValidoParaSerEnviado()) return true;
 
     return false;
+  }
+
+  public implementaObtencaoDeCategorias() {
+    this.stateService.enviaRequisicaoDeObtencaoDeCategoriasSubscription =
+      this.apiService.seInscreveEmObservableDeObtencaoDeCategorias(
+        this.matSnackBar,
+        this.stateService,
+        this.formService
+      );
   }
 
   public implementaEnvioDoFormulario() {
